@@ -6,7 +6,7 @@ const App = ({ Component, pageProps }) => {
     return (
         <>
             <Head>
-                <title>Miro's Portfolio</title>
+                <title>Miro&apos;s Portfolio</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
 

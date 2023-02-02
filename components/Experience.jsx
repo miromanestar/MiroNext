@@ -8,17 +8,7 @@ const positions = [
         company: 'Tennessee Valley Authority',
         start: '2020-01-07',
         end: '2020-01-07',
-        startFull: 'January 7, 2020',
-        endFull: 'Present',
-    },
-    {
-        title: 'Resident Assistant',
-        type: 'Part Time',
-        location: 'Collegedale, TN',
-        company: 'Southern Adventist University',
-        start: '2020-01-07',
-        end: '2020-01-07',
-        startFull: 'January 7, 2020',
+        startFull: 'February 2022',
         endFull: 'Present',
     },
     {
@@ -28,20 +18,30 @@ const positions = [
         company: 'Experimax',
         start: '2020-01-14',
         end: '2020-01-14',
-        startFull: 'January 14, 2020',
-        endFull: 'Present',
+        startFull: 'July 2021',
+        endFull: 'August 2021',
+    },
+    {
+        title: 'Student Tutor',
+        type: 'Part Time',
+        location: 'Collegedale, TN',
+        company: 'Southern Adventist University',
+        start: '2020-01-07',
+        end: '2020-01-07',
+        startFull: 'October 2020',
+        endFull: 'May 2021',
     },
 ]
 
 const Experience = () => {
     return (
-        <div className="bg-secondaryBg w-full py-8 px-4">
+        <div className="bg-secondaryBg w-full pt-8 px-4">
             <h2 className="text-center pb-8 text-3xl font-bold tracking-tight text-white sm:text-4xl">My Qualifications</h2>
             <div className="overflow-hidden bg-background shadow rounded-md max-w-screen-xl mx-auto">
                 <ul role="list" className="divide-y divide-gray-600">
                     {positions.map((position, i) => (
                         <li key={i}>
-                            <a href="#" className="block duration-200 hover:bg-tertiaryBg">
+                            <div className="block duration-200 hover:bg-tertiaryBg">
                                 <div className="px-4 py-4 sm:px-6">
                                     <div className="flex items-center justify-between">
                                         <p className="truncate text-sm font-medium text-highlight">{position.title}</p>
@@ -70,7 +70,7 @@ const Experience = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </li>
                     ))}
                 </ul>

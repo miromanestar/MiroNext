@@ -2,8 +2,9 @@ import React from 'react'
 import { Fade, Bounce } from 'react-awesome-reveal'
 
 const About = () => (
-    <section className="bg-secondaryBg">
-        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+    <section className="relative bg-background">
+        <div className="z-10 absolute h-[15%] w-full bottom-0 bg-gradient-to-b from-transparent to-secondaryBg" aria-hidden="true" />
+        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:pb-16 lg:px-6">
             <div className="font-light sm:text-lg text-gray-300">
                 <Bounce triggerOnce={true} direction="left">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">About Me</h2>

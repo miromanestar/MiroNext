@@ -14,6 +14,9 @@ module.exports = {
         highlight2: '#81A1C1',
         nordgreen: '#A3BE8C',
         nordred: '#BF616A',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
       }
     },
   },

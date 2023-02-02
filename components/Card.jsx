@@ -1,5 +1,5 @@
 const Card = ({ data }) => (
-    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer hover:bg-secondaryBg">
         <div className="flex-shrink-0">
             <img className="h-48 w-full object-cover" src={data.img} alt="" />
         </div>

@@ -105,9 +105,9 @@ const SocialLinks = () => (
 )
 
 const Header = () => (
-    <Popover className="absolute z-50 w-full">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="flex items-center justify-between py-6 md:space-x-10">
+    <Popover className="fixed z-50 w-full">
+        <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="flex items-center md:bg-tertiaryBg/30 drop-shadow-lg saturate-200 py-6 md:rounded-lg md:p-2 md:mt-3 md:backdrop-blur justify-between md:space-x-10">
 
                 <div className="flex items-center gap-6">
                     <div className="flex justify-start">

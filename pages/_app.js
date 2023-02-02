@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import '../styles/globals.css'
 
 const App = ({ Component, pageProps }) => {
@@ -11,7 +12,10 @@ const App = ({ Component, pageProps }) => {
             </Head>
 
             <Header />
-            <Component {...pageProps} />
+            <div className="flex flex-col h-screen">
+                <Component {...pageProps} />
+                <Footer />
+            </div>
         </>
     )
 }

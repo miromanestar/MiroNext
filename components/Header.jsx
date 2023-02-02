@@ -73,7 +73,7 @@ const ProjectLinks = () => (
                 <a
                     key={item.name}
                     href={item.href}
-                    className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                    className="-m-3 flex items-start rounded-lg p-3 duration-200 hover:bg-background"
                 >
                     <item.icon className="h-6 w-6 flex-shrink-0 text-highlight" aria-hidden="true" />
                     <div className="ml-4">
@@ -85,7 +85,7 @@ const ProjectLinks = () => (
         </div>
         <div className="bg-tertiaryBg px-5 py-5 sm:px-8">
             <div className="text-sm">
-                <Link href="/projects" className="font-medium text-highlight hover:text-indigo-500">
+                <Link href="/projects" className="font-medium duration-200 text-highlight hover:brightness-75">
                     View all projects
                     <span aria-hidden="true"> &rarr;</span>
                 </Link>
@@ -107,7 +107,7 @@ const SocialLinks = () => (
 const Header = () => (
     <Popover className="fixed z-50 w-full">
         <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="flex items-center md:bg-tertiaryBg/30 drop-shadow-lg saturate-200 py-6 md:rounded-lg md:p-2 md:mt-3 md:backdrop-blur justify-between md:space-x-10">
+            <div className="flex items-center px-4 bg-tertiaryBg/10 drop-shadow-lg saturate-200 py-2  mt-3 backdrop-blur justify-between rounded-lg md:p-3 md:space-x-10">
 
                 <div className="flex items-center gap-6">
                     <div className="flex justify-start">
@@ -136,7 +136,7 @@ const Header = () => (
                                         <span>Projects</span>
                                         <ChevronDownIcon
                                             className={classNames(
-                                                open ? 'text-gray-600' : 'text-gray-400',
+                                                open ? 'text-gray-100' : 'text-gray-200',
                                                 'ml-2 h-5 w-5 group-hover:text-white'
                                             )}
                                             aria-hidden="true"

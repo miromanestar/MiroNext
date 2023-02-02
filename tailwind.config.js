@@ -11,6 +11,9 @@ module.exports = {
         secondaryBg: '#3B4252',
         tertiaryBg: '#434C5E',
         highlight: '#88C0D0',
+        highlight2: '#81A1C1',
+        nordgreen: '#A3BE8C',
+        nordred: '#BF616A',
       }
     },
   },

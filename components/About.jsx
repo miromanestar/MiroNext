@@ -8,7 +8,7 @@ const About = () => (
                 <Bounce triggerOnce={true} direction="left">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">About Me</h2>
                     <p className="mb-4">
-                        I'm a full-stack software engineer with a passion for creating beautiful, intuitive, and functional web applications.
+                        I&apos;m a full-stack software engineer with a passion for creating beautiful, intuitive, and functional web applications.
                         Whether it be a simple landing page or a complex web application, I take each as an opportunity to learn and grow.
                         
                     </p>

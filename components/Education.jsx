@@ -1,4 +1,5 @@
 import { GlobeAltIcon } from '@heroicons/react/20/solid'
+import { BuildingLibraryIcon, CalendarIcon, AcademicCapIcon } from '@heroicons/react/24/solid'
 
 const schools = [
     {
@@ -31,14 +32,21 @@ const Education = () => {
                             <div className="flex-1 truncate">
                                 <div className="flex flex-col md:flex-row gap-4">
                                     <h3 className="truncate text-lg font-medium text-white">{s.degree}</h3>
-                                    <div className="w-fit md:inline-flex rounded-full bg-nordred px-2 md:pt-1 text-xs font-semibold leading-5 text-white">
+                                    <div className="flex gap-1 p-1 w-fit rounded-full bg-nordred px-2 md:pt-1 text-xs font-semibold leading-5 text-white">
+                                        <AcademicCapIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
                                         {s.level}
                                     </div>
                                 </div>
-                                <p className="mt-4 truncate text-sm text-gray-300">{s.institution}</p>
-                                <p className="mt-1 truncate text-sm text-gray-300">{s.date}</p>
+                                <div className="flex gap-2 mt-4 truncate text-sm text-gray-300">
+                                    <BuildingLibraryIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
+                                    {s.institution}
+                                </div>
+                                <div className="flex gap-2 mt-1 truncate text-sm text-gray-300">
+                                    <CalendarIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
+                                    {s.date}
+                                </div>
                             </div>
-                            <img className="h-[100px] w-[100px] flex-shrink-0 rounded-full bg-highlight2 p-2" src={s.imageUrl} alt="" />
+                            {/* <img className="h-[100px] w-[100px] flex-shrink-0 rounded-full bg-highlight2 p-2" src={s.imageUrl} alt="" /> */}
                         </div>
                         <div>
                             <div className="-mt-px flex divide-x divide-gray-600">

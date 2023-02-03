@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'next/link'
-import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
     Bars3Icon,
@@ -60,9 +59,6 @@ const Links = () => (
         <Link href="/" className="text-base font-medium text-white hover:text-gray-100">
             Home
         </Link>
-        <Link href="/about" className="text-base font-medium text-white hover:text-gray-100">
-            About
-        </Link>
     </>
 )
 
@@ -83,7 +79,7 @@ const ProjectLinks = () => (
                 </a>
             ))}
         </div>
-        <div className="bg-tertiaryBg px-5 py-5 sm:px-8">
+        <div className="bg-tertiaryBg rounded-b-lg px-5 py-5 sm:px-8">
             <div className="text-sm">
                 <Link href="/projects" className="font-medium duration-200 text-highlight hover:brightness-75">
                     View all projects
@@ -152,7 +148,7 @@ const Header = () => (
                                         leaveFrom="opacity-100 translate-y-0"
                                         leaveTo="opacity-0 translate-y-1"
                                     >
-                                        <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
+                                        <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-10 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
                                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                                 <ProjectLinks />
                                             </div>
@@ -169,7 +165,7 @@ const Header = () => (
                 </div>
 
                 <div className="-my-2 -mr-2 md:hidden">
-                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-secondaryBg p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none">
+                    <Popover.Button className="inline-flex items-center justify-center rounded-md drop-shadow-lg shadow-md bg-gray-800/10 border-2 border-white/30 p-2 text-gray-200 hover:bg-gray-100 hover:text-white focus:outline-none">
                         <span className="sr-only">Open menu</span>
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -187,7 +183,7 @@ const Header = () => (
             leaveTo="opacity-0 scale-95"
         >
             <Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden">
-                <div className="divide-y-2 divide-gray-50 rounded-lg bg-secondaryBg shadow-lg ring-1 ring-black ring-opacity-5">
+                <div className="divide-y-[1px] divide-gray-500 rounded-lg bg-secondaryBg shadow-lg ring-1 ring-black ring-opacity-5">
                     <div className="px-5 pt-5 pb-6">
                         <div className="flex items-center justify-between">
                             <div>

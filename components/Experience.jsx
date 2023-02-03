@@ -1,4 +1,4 @@
-import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
+import { CalendarIcon, MapPinIcon, BuildingOffice2Icon } from '@heroicons/react/20/solid'
 
 const positions = [
     {
@@ -36,12 +36,12 @@ const positions = [
 const Experience = () => {
     return (
         <div className="bg-secondaryBg w-full pt-8 px-4">
-            <h2 className="text-center pb-8 text-3xl font-bold tracking-tight text-white sm:text-4xl">My Qualifications</h2>
+            <h2 className="text-center pb-8 text-3xl font-bold text-white sm:text-4xl">My Qualifications</h2>
             <div className="overflow-hidden bg-background shadow rounded-md max-w-screen-xl mx-auto">
                 <ul role="list" className="divide-y divide-gray-600">
                     {positions.map((position, i) => (
                         <li key={i}>
-                            <div className="block duration-200 hover:bg-tertiaryBg">
+                            <div className="block">
                                 <div className="px-4 py-4 sm:px-6">
                                     <div className="flex items-center justify-between">
                                         <p className="truncate text-sm font-medium text-highlight">{position.title}</p>
@@ -54,7 +54,7 @@ const Experience = () => {
                                     <div className="mt-2 sm:flex sm:justify-between">
                                         <div className="sm:flex">
                                             <p className="flex items-center text-sm text-gray-500">
-                                                <UsersIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                                                <BuildingOffice2Icon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                                                 {position.company}
                                             </p>
                                             <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">

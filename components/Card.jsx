@@ -25,12 +25,12 @@ const Card = ({ data }) => (
                 <div className="ml-3">
                     <p className="text-sm font-medium text-gray-300">
                         <a href={data.url} className="hover:underline">
-                            About
+                            Status
                         </a>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-400">
-                        <time dateTime={data.time}>{data.time}</time>
-                        <span aria-hidden="true">&middot;</span>
+                        {/* <time dateTime={data.time}>{data.time}</time>
+                        <span aria-hidden="true">&middot;</span> */}
                         <span>{data.status}</span>
                     </div>
                 </div>

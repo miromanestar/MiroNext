@@ -7,6 +7,7 @@ import Experience from '../components/Experience'
 import Education from '../components/Education'
 
 const Home = () => {
+
     return (
         <div>
             <Hero />

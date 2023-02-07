@@ -13,7 +13,9 @@ const App = ({ Component, pageProps }) => {
 
             <Header />
             <div className="flex flex-col h-screen">
-                <Component {...pageProps} />
+                <div className="flex-grow">
+                    <Component {...pageProps} />
+                </div>
                 <Footer />
             </div>
         </>

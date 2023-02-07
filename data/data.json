@@ -1,0 +1,60 @@
+{
+    "projects": [
+        {
+          "name": "SAU Missions Dashboard",
+          "description": "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
+          "href": "/projects/sau-missions",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "In Progress",
+          "category": "Tauri"
+        },
+        {
+          "name": "Youtube Gallery",
+          "description": "A youtube gallery which grabs playlist data and displays it in a nice, response format with lightbox.",
+          "href": "/projects/youtube-gallery",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "Complete",
+          "category": "Web Widget"
+        },
+        {
+          "name": "Illuminate Website",
+          "description": "A website built for the Illuminate team at Enactus",
+          "href": "/projects/illuminate",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "Complete",
+          "category": "Website"
+        },
+        {
+          "name": "Constraint Based Programming",
+          "description": "A simple visualizer for constraint based programming. Done in Javascript!",
+          "href": "/projects/constraints",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "Complete",
+          "category": "Prototype"
+        },
+        {
+          "name": "RayCalc",
+          "description": "A cross-platform radiation dosimetry app build for emergency situations.",
+          "href": "/projects/raycalc",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "Complete",
+          "category": "Mobile App"
+        },
+        {
+          "name": "Maze Generator",
+          "description": "A simple maze generator built using the JavaScript canvas. (And a C++ version too)",
+          "href": "/projects/maze",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "Complete",
+          "category": "Concept"
+        },
+        {
+          "name": "Word Search Generator",
+          "description": "A word search gemerator built using the JavaScript. Comes with a solver!",
+          "href": "/projects/wordsearch",
+          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "status": "Complete",
+          "category": "Concept"
+        }
+      ]
+}

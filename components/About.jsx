@@ -4,6 +4,7 @@ import { Fade, Bounce } from 'react-awesome-reveal'
 const About = () => (
     <section className="relative bg-background">
         <div className="z-10 absolute h-[15%] w-full bottom-0 bg-gradient-to-b from-transparent to-secondaryBg" aria-hidden="true" />
+        
         <div className="gap-16 items-center py-8 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:pb-16">
             <div className="font-light sm:text-lg text-gray-300 px-4 lg:px-0 lg:pl-8">
                 <Bounce triggerOnce={true} direction="left">
@@ -29,6 +30,7 @@ const About = () => (
                 </Fade>
             </div>
         </div>
+        
     </section>
 )
 

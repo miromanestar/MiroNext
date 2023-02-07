@@ -1,13 +1,13 @@
 const Card = ({ data }) => (
-    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer hover:bg-secondaryBg">
+    <div className="group h-full flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer">
         <div className="flex-shrink-0">
-            <img className="h-48 w-full object-cover" src={data.img} alt="" />
+            <img className="h-48 w-full object-cover duration-200 group-hover:scale-105" src={data.img} alt="" />
         </div>
-        <div className="flex flex-1 flex-col justify-between bg-tertiaryBg p-6">
+        <div className="flex flex-1 flex-col justify-between duration-200 bg-tertiaryBg group-hover:bg-secondaryBg group-hover:scale-[1.02] p-6">
             <div className="flex-1">
                 <p className="text-sm font-medium text-highlight">
                     <a href={data.href} className="hover:underline">
-                        Hmmm
+                        {data.category}
                     </a>
                 </p>
                 <a href={data.href} className="mt-2 block">
@@ -15,7 +15,7 @@ const Card = ({ data }) => (
                     <p className="mt-3 text-base text-white">{data.description}</p>
                 </a>
             </div>
-            <div className="mt-6 flex items-center">
+            <div className="mt-6 flex items-center select-none">
                 <div className="flex-shrink-0">
                     <a href={data.url}>
                         <span className="sr-only">hmm</span>
@@ -29,8 +29,6 @@ const Card = ({ data }) => (
                         </a>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-400">
-                        {/* <time dateTime={data.time}>{data.time}</time>
-                        <span aria-hidden="true">&middot;</span> */}
                         <span>{data.status}</span>
                     </div>
                 </div>

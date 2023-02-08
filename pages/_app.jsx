@@ -9,6 +9,7 @@ const App = ({ Component, pageProps }) => {
             <Head>
                 <title>Miro&apos;s Portfolio</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <link rel="icon" type="image/x-icon" href="/mm-logo.png" />
             </Head>
 
             <Header />

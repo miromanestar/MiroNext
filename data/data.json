@@ -3,7 +3,7 @@
         {
           "name": "SAU Missions Dashboard",
           "description": "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
-          "href": "/projects/sau-missions",
+          "href": "https://missions.miromanestar.com",
           "img": "https://wallpaperaccess.com/full/221471.jpg",
           "status": "In Progress",
           "category": "Tauri"
@@ -11,15 +11,15 @@
         {
           "name": "Youtube Gallery",
           "description": "A youtube gallery which grabs playlist data and displays it in a nice, response format with lightbox.",
-          "href": "/projects/youtube-gallery",
-          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "href": "https://miromanestar.github.io/Youtube-Gallery/",
+          "img": "https://i.imgur.com/5oE02Vg.jpg",
           "status": "Complete",
           "category": "Web Widget"
         },
         {
           "name": "Illuminate Website",
           "description": "A website built for the Illuminate team at Enactus",
-          "href": "/projects/illuminate",
+          "href": "https://illuminatesau.com",
           "img": "https://wallpaperaccess.com/full/221471.jpg",
           "status": "Complete",
           "category": "Website"
@@ -27,16 +27,24 @@
         {
           "name": "Constraint Based Programming",
           "description": "A simple visualizer for constraint based programming. Done in Javascript!",
-          "href": "/projects/constraints",
-          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "href": "https://constraints.miromanestar.com/",
+          "img": "https://i.imgur.com/DzQUocD.jpg",
           "status": "Complete",
-          "category": "Prototype"
+          "category": "Visualizer"
+        },
+        {
+          "name": "Segmentation Simulator",
+          "description": "A memory segmentation and virtual address translation visualizer.",
+          "href": "https://sim.miromanestar.com/",
+          "img": "https://i.imgur.com/rT88WGi.jpg",
+          "status": "Complete",
+          "category": "Visualizer"
         },
         {
           "name": "RayCalc",
           "description": "A cross-platform radiation dosimetry app build for emergency situations.",
-          "href": "/projects/raycalc",
-          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "href": "https://raycalc.com/",
+          "img": "https://i.imgur.com/LpWvdv4.jpg",
           "status": "Complete",
           "category": "Mobile App"
         },
@@ -44,7 +52,7 @@
           "name": "Maze Generator",
           "description": "A simple maze generator built using the JavaScript canvas. (And a C++ version too)",
           "href": "/projects/maze",
-          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "img": "https://i.imgur.com/o46qBng.jpg",
           "status": "Complete",
           "category": "Concept"
         },
@@ -52,7 +60,7 @@
           "name": "Word Search Generator",
           "description": "A word search gemerator built using the JavaScript. Comes with a solver!",
           "href": "/projects/wordsearch",
-          "img": "https://wallpaperaccess.com/full/221471.jpg",
+          "img": "https://i.imgur.com/o9JJIPj.jpg",
           "status": "Complete",
           "category": "Concept"
         }

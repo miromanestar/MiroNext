@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Zoom } from 'react-awesome-reveal'
-import { Gradient } from '../components/Gradient'
+import { Gradient } from '../../components/Gradient'
 
-import Card from '../components/Card'
+import Card from '../../components/Card'
 
-import data from '../data/data.json'
+import data from '../../data/data.json'
 
 const gradient = new Gradient()
 
 const Projects = () => {
+    const [width, setWidth] = useState(0)
 
     const canvasRef = useRef(null)
 
@@ -16,6 +17,8 @@ const Projects = () => {
         if (canvasRef.current) {
             gradient.initGradient('#gradient-canvas')
         }
+
+        setWidth(window.innerWidth)
     })
 
     return (
@@ -26,15 +29,17 @@ const Projects = () => {
             </div>
 
             <div className="px-4 my-12 mx-auto max-w-7xl grid gap-8 lg:grid-cols-3">
-                { data.projects.map((p, i) => (
-                    <Zoom 
-                        key={`fcard-${i}`}
-                        delay={i * 100}
-                        triggerOnce
-                    >
-                        <Card data={p} />
-                    </Zoom>
-                ))}
+
+                <Zoom
+                    triggerOnce
+                    cascade
+                    damping={width < 1024 ? 0 : 0.2}
+                >
+                    {data.projects.map((p, i) => (
+                        <Card key={`fcard-${i}`} data={p} />
+                    ))}
+                </Zoom>
+
             </div>
 
         </div>

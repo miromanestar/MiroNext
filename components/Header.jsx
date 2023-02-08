@@ -5,7 +5,6 @@ import {
     Bars3Icon,
     LightBulbIcon,
     SquaresPlusIcon,
-    XMarkIcon,
     GlobeEuropeAfricaIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -162,7 +161,7 @@ const Header = () => {
                                                     leaveFrom="opacity-100 translate-y-0"
                                                     leaveTo="opacity-0 translate-y-1"
                                                 >
-                                                    <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-0 pt-10 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
+                                                    <Popover.Panel className="absolute left-1/2 z-10 mt-5 top-0 pt-8 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
                                                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                                             <ProjectLinks close={close} />
                                                         </div>

@@ -1,10 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { Zoom } from 'react-awesome-reveal'
+import { Transition } from '@headlessui/react'
 
 import Template from '../../components/Template'
 import Card from '../../components/Card'
 
 import data from '../../data/data.json'
+
+const DelayedTransition = (props) => {
+    const [show, setShow] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShow(true)
+        }, props.delay)
+    }, [])
+
+    return (
+        <Transition
+            {...props}
+            show={show}
+        >
+            {props.children}
+        </Transition>
+    )
+}
 
 const Projects = () => {
     const [width, setWidth] = useState(0)
@@ -19,22 +38,20 @@ const Projects = () => {
         >
             <div className="my-12 grid gap-8 lg:grid-cols-3">
 
-                {width < 1024 ? (
-                    data.projects.map((p, i) => (
-                        <Card key={`fcard-${i}`} data={p} />
-                    )))
-                    : (
-                        <Zoom
-                            triggerOnce
-                            cascade={width < 1024 ? false : true}
-                            damping={width < 1024 ? 0 : 0.2}
-                        >
-                            {data.projects.map((p, i) => (
-                                <Card key={`fcard-${i}`} data={p} />
-                            ))}
-                        </Zoom>
-                    )
-                }
+                {data.projects.map((p, i) => (
+                    <DelayedTransition
+                        key={`fcard-${i}`}
+                        delay={i * 100}
+                        enter={`transition duration-[400ms]`}
+                        enterFrom="opacity-0 scale-50"
+                        enterTo="opacity-100 scale-100"
+                        leave="duration-200 transition ease-in-out"
+                        leaveFrom="opacity-100 rotate-0 scale-100 "
+                        leaveTo="opacity-0 scale-95 "
+                    >
+                        <Card data={p} />
+                    </DelayedTransition>
+                ))}
             </div>
         </Template>
     )

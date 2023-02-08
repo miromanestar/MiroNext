@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
 import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
 import {
@@ -56,13 +56,13 @@ function classNames(...classes) {
 
 const Links = ({ close }) => (
     <>
-        <Link onClick={close} href="/" className="text-base font-medium text-white hover:text-gray-100">
+        <Link onClick={close} href="/" className="text-base font-medium focus:outline-none text-white hover:text-gray-100">
             Home
         </Link>
     </>
 )
 
-const ProjectLinks = ({ close }) => (
+const ProjectLinks = ({ close, }) => (
     <>
         <div className="relative grid gap-6 bg-secondaryBg px-5 py-6 sm:gap-8 sm:p-8 focus:outline-none">
             {projects.map((item) => (
@@ -101,124 +101,117 @@ const SocialLinks = () => (
     </div>
 )
 
-const Header = () => (
-    <Popover className="fixed z-50 w-full">
-        {({ close: closeOuter }) => (
-            <>
-                <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
-                    <div className="flex items-center px-4 bg-tertiaryBg/10 drop-shadow-md py-2  mt-3 backdrop-blur justify-between rounded-lg md:p-3 md:space-x-10">
+const Header = () => {
+    const [isOpen, setIsOpen] = useState(false)
 
-                        <div className="flex items-center gap-6">
-                            <div className="flex justify-start">
-                                <Link href="/">
-                                    <span className="sr-only">Miro Manestar</span>
-                                    <img
-                                        className="h-[3em] white-filter"
-                                        src="/logo.svg"
-                                        alt=""
-                                    />
-                                </Link>
-                            </div>
+    return (
+        <Popover className="fixed z-50 w-full">
+            {({ close: closeOuter }) => (
+                <>
+                    <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
+                        <div className="flex items-center px-4 bg-tertiaryBg/10 drop-shadow-md py-2  mt-3 backdrop-blur justify-between rounded-lg md:p-3 md:space-x-10">
 
-                            <Popover.Group as="nav" className="hidden space-x-10 md:flex">
-                                <Link href="/" className="text-base font-medium text-white hover:text-gray-100">
-                                    Home
-                                </Link>
-
-                                <Popover className="relative">
-                                    {({ open, close }) => (
-                                        <>
-                                            <Popover.Button
-                                                className={classNames(
-                                                    open ? 'text-gray-100' : 'text-white',
-                                                    'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-100 focus:outline-none'
-                                                )}
-                                            >
-                                                <span>Projects</span>
-                                                <ChevronDownIcon
-                                                    className={classNames(
-                                                        open ? 'text-gray-100' : 'text-gray-200',
-                                                        'ml-2 h-5 w-5 group-hover:text-white'
-                                                    )}
-                                                    aria-hidden="true"
-                                                />
-                                            </Popover.Button>
-
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-200"
-                                                enterFrom="opacity-0 translate-y-1"
-                                                enterTo="opacity-100 translate-y-0"
-                                                leave="transition ease-in duration-150"
-                                                leaveFrom="opacity-100 translate-y-0"
-                                                leaveTo="opacity-0 translate-y-1"
-                                            >
-                                                <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-10 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
-                                                    <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                                                        <ProjectLinks close={close} />
-                                                    </div>
-                                                </Popover.Panel>
-                                            </Transition>
-                                        </>
-                                    )}
-                                </Popover>
-                            </Popover.Group>
-                        </div>
-
-                        <div className="hidden md:block">
-                            <SocialLinks />
-                        </div>
-
-                        <div className="-my-2 -mr-2 md:hidden">
-                            <Popover.Button className="inline-flex items-center justify-center rounded-md drop-shadow-lg shadow-md bg-gray-800/10 border-2 border-white/30 p-2 text-gray-200 hover:text-white focus:outline-none select-none">
-                                <span className="sr-only">Open menu</span>
-                                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                            </Popover.Button>
-                        </div>
-                    </div>
-                </div>
-
-                <Transition
-                    as={Fragment}
-                    enter="duration-200 ease-out"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="duration-100 ease-in"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
-                >
-                    <Popover.Panel focus className="absolute inset-x-0 top-[80px] origin-top-right transform p-2 transition md:hidden">
-                        <div className="divide-y-[1px] divide-gray-500 rounded-lg bg-secondaryBg shadow-lg ring-1 ring-black ring-opacity-5">
-                            {/* <div className="px-5 pt-5 pb-6">
-                                <div className="flex items-center justify-between">
-                                    <Link onClick={closeOuter} href="/">
+                            <div className="flex items-center gap-6">
+                                <div className="flex justify-start">
+                                    <Link href="/">
+                                        <span className="sr-only">Miro Manestar</span>
                                         <img
-                                            className="h-[3em] w-auto white-filter"
+                                            className="h-[3em] white-filter"
                                             src="/logo.svg"
-                                            alt="Miro Manestar"
+                                            alt=""
                                         />
                                     </Link>
-                                    <div className="-mr-2">
-                                        <Popover.Button className="inline-flex items-center justify-center rounded-md bg-secondaryBg p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none">
-                                            <span className="sr-only">Close menu</span>
-                                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                                        </Popover.Button>
-                                    </div>
                                 </div>
-                            </div> */}
-                            <div className="space-y-6 py-6 px-5">
-                                <div className="flex flex-row flex-wrap justify-around">
-                                    <Links close={closeOuter} />
-                                </div>
+
+                                <Popover.Group as="nav" className="hidden space-x-10 md:flex">
+                                    <Link href="/" className="text-base font-medium text-white hover:text-gray-100">
+                                        Home
+                                    </Link>
+
+                                    <Popover 
+                                        className="relative"
+                                        onMouseEnter={() => setIsOpen(true)}
+                                        onMouseLeave={() => setIsOpen(false)}
+                                    >
+                                        {({ open, close }) => (
+                                            <>
+                                                <Link
+                                                    className={classNames(
+                                                        open ? 'text-gray-100' : 'text-white',
+                                                        'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-100 focus:outline-none'
+                                                    )}
+                                                    href="/projects"
+                                                >
+                                                    <span>Projects</span>
+                                                    <ChevronDownIcon
+                                                        className={classNames(
+                                                            open ? 'text-gray-100' : 'text-gray-200',
+                                                            'ml-2 h-5 w-5 group-hover:text-white'
+                                                        )}
+                                                        aria-hidden="true"
+                                                    />
+                                                </Link>
+
+                                                <Transition
+                                                    as={Fragment}
+                                                    show={isOpen}
+                                                    enter="transition ease-out duration-200"
+                                                    enterFrom="opacity-0 translate-y-1"
+                                                    enterTo="opacity-100 translate-y-0"
+                                                    leave="transition ease-in duration-150"
+                                                    leaveFrom="opacity-100 translate-y-0"
+                                                    leaveTo="opacity-0 translate-y-1"
+                                                >
+                                                    <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-0 pt-10 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
+                                                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                                                            <ProjectLinks close={close} />
+                                                        </div>
+                                                    </Popover.Panel>
+                                                </Transition>
+                                            </>
+                                        )}
+                                    </Popover>
+                                </Popover.Group>
+                            </div>
+
+                            <div className="hidden md:block">
                                 <SocialLinks />
                             </div>
-                            <ProjectLinks close={closeOuter} />
+
+                            <div className="-my-2 -mr-2 md:hidden">
+                                <Popover.Button className="inline-flex items-center justify-center rounded-md drop-shadow-lg shadow-md bg-gray-800/10 border-2 border-white/30 p-2 text-gray-200 hover:text-white focus:outline-none select-none">
+                                    <span className="sr-only">Open menu</span>
+                                    <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                                </Popover.Button>
+                            </div>
                         </div>
-                    </Popover.Panel>
-                </Transition>
-            </>
-        )}
-    </Popover>
-)
+                    </div>
+
+                    <Transition
+                        as={Fragment}
+                        enter="duration-200 ease-out"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="duration-100 ease-in"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95"
+                    >
+                        <Popover.Panel focus className="absolute inset-x-0 top-[80px] origin-top-right transform p-2 transition md:hidden">
+                            <div className="divide-y-[1px] divide-gray-500 rounded-lg bg-secondaryBg shadow-lg ring-1 ring-black ring-opacity-5">
+                                <div className="space-y-6 py-6 px-5">
+                                    <div className="flex flex-row flex-wrap justify-around">
+                                        <Links close={closeOuter} />
+                                    </div>
+                                    <SocialLinks />
+                                </div>
+                                <ProjectLinks close={closeOuter} />
+                            </div>
+                        </Popover.Panel>
+                    </Transition>
+                </>
+            )}
+        </Popover>
+    )
+}
 
 export default Header

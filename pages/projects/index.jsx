@@ -19,16 +19,22 @@ const Projects = () => {
         >
             <div className="my-12 grid gap-8 lg:grid-cols-3">
 
-                <Zoom
-                    triggerOnce
-                    cascade
-                    damping={width < 1024 ? 0 : 0.2}
-                >
-                    {data.projects.map((p, i) => (
+                {width < 1024 ? (
+                    data.projects.map((p, i) => (
                         <Card key={`fcard-${i}`} data={p} />
-                    ))}
-                </Zoom>
-
+                    )))
+                    : (
+                        <Zoom
+                            triggerOnce
+                            cascade={width < 1024 ? false : true}
+                            damping={width < 1024 ? 0 : 0.2}
+                        >
+                            {data.projects.map((p, i) => (
+                                <Card key={`fcard-${i}`} data={p} />
+                            ))}
+                        </Zoom>
+                    )
+                }
             </div>
         </Template>
     )

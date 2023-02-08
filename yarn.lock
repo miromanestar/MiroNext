@@ -2005,7 +2005,7 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-react-awesome-reveal@^4.2.3:
+react-awesome-reveal@4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/react-awesome-reveal/-/react-awesome-reveal-4.2.3.tgz#129e85eee3b1ce522e09f8b06033cb1d233b95bb"
   integrity sha512-wln5oVUw8qBTF0flLyHxbcDsM+fpYvcQZ0aih9YL1aK1CiVewEp7D/ltCsQ8lKQEsZ50udvmje4HPKxyiUDp8Q==

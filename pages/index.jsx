@@ -13,7 +13,10 @@ const Home = () => {
     return (
         <div>
             <Hero />
-            <Cards cards={data.projects.slice(0, 3)} />
+            <Cards 
+                className="-mt-[300px]" 
+                cards={data.projects.slice(0, 3)} 
+            />
             <About />
             <Experience />
             <Education />

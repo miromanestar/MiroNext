@@ -54,20 +54,21 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const Links = () => (
+const Links = ({ close }) => (
     <>
-        <Link href="/" className="text-base font-medium text-white hover:text-gray-100">
+        <Link onClick={close} href="/" className="text-base font-medium text-white hover:text-gray-100">
             Home
         </Link>
     </>
 )
 
-const ProjectLinks = () => (
+const ProjectLinks = ({ close }) => (
     <>
-        <div className="relative grid gap-6 bg-secondaryBg px-5 py-6 sm:gap-8 sm:p-8">
+        <div className="relative grid gap-6 bg-secondaryBg px-5 py-6 sm:gap-8 sm:p-8 focus:outline-none">
             {projects.map((item) => (
-                <a
+                <Link
                     key={item.name}
+                    onClick={close}
                     href={item.href}
                     className="-m-3 flex items-start rounded-lg p-3 duration-200 hover:bg-background"
                 >
@@ -76,12 +77,12 @@ const ProjectLinks = () => (
                         <p className="text-base font-medium text-gray-100">{item.name}</p>
                         <p className="mt-1 text-sm text-white">{item.description}</p>
                     </div>
-                </a>
+                </Link>
             ))}
         </div>
-        <div className="bg-tertiaryBg rounded-b-lg px-5 py-5 sm:px-8">
+        <div className="bg-tertiaryBg rounded-b-lg px-5 py-5 sm:px-8 focus:outline-none">
             <div className="text-sm">
-                <Link href="/projects" className="font-medium duration-200 text-highlight hover:brightness-75">
+                <Link onClick={close} href="/projects" className="font-medium duration-200 text-highlight hover:brightness-75">
                     View all projects
                     <span aria-hidden="true"> &rarr;</span>
                 </Link>
@@ -102,28 +103,30 @@ const SocialLinks = () => (
 
 const Header = () => (
     <Popover className="fixed z-50 w-full">
-        {({ close }) => (
+        {({ close: closeOuter }) => (
             <>
                 <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
                     <div className="flex items-center px-4 bg-tertiaryBg/10 drop-shadow-md py-2  mt-3 backdrop-blur justify-between rounded-lg md:p-3 md:space-x-10">
 
                         <div className="flex items-center gap-6">
                             <div className="flex justify-start">
-                                <a href="#">
+                                <Link href="/">
                                     <span className="sr-only">Miro Manestar</span>
                                     <img
                                         className="h-[3em] white-filter"
                                         src="/logo.svg"
                                         alt=""
                                     />
-                                </a>
+                                </Link>
                             </div>
 
                             <Popover.Group as="nav" className="hidden space-x-10 md:flex">
-                                <Links />
+                                <Link href="/" className="text-base font-medium text-white hover:text-gray-100">
+                                    Home
+                                </Link>
 
                                 <Popover className="relative">
-                                    {({ open }) => (
+                                    {({ open, close }) => (
                                         <>
                                             <Popover.Button
                                                 className={classNames(
@@ -152,7 +155,7 @@ const Header = () => (
                                             >
                                                 <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-10 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
                                                     <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                                                        <ProjectLinks />
+                                                        <ProjectLinks close={close} />
                                                     </div>
                                                 </Popover.Panel>
                                             </Transition>
@@ -167,7 +170,7 @@ const Header = () => (
                         </div>
 
                         <div className="-my-2 -mr-2 md:hidden">
-                            <Popover.Button className="inline-flex items-center justify-center rounded-md drop-shadow-lg shadow-md bg-gray-800/10 border-2 border-white/30 p-2 text-gray-200 hover:bg-gray-100 hover:text-white focus:outline-none">
+                            <Popover.Button className="inline-flex items-center justify-center rounded-md drop-shadow-lg shadow-md bg-gray-800/10 border-2 border-white/30 p-2 text-gray-200 hover:text-white focus:outline-none select-none">
                                 <span className="sr-only">Open menu</span>
                                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                             </Popover.Button>
@@ -184,17 +187,17 @@ const Header = () => (
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                 >
-                    <Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden">
+                    <Popover.Panel focus className="absolute inset-x-0 top-[80px] origin-top-right transform p-2 transition md:hidden">
                         <div className="divide-y-[1px] divide-gray-500 rounded-lg bg-secondaryBg shadow-lg ring-1 ring-black ring-opacity-5">
-                            <div className="px-5 pt-5 pb-6">
+                            {/* <div className="px-5 pt-5 pb-6">
                                 <div className="flex items-center justify-between">
-                                    <div>
+                                    <Link onClick={closeOuter} href="/">
                                         <img
                                             className="h-[3em] w-auto white-filter"
                                             src="/logo.svg"
                                             alt="Miro Manestar"
                                         />
-                                    </div>
+                                    </Link>
                                     <div className="-mr-2">
                                         <Popover.Button className="inline-flex items-center justify-center rounded-md bg-secondaryBg p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none">
                                             <span className="sr-only">Close menu</span>
@@ -202,14 +205,14 @@ const Header = () => (
                                         </Popover.Button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="space-y-6 py-6 px-5">
                                 <div className="flex flex-row flex-wrap justify-around">
-                                    <Links />
+                                    <Links close={closeOuter} />
                                 </div>
                                 <SocialLinks />
                             </div>
-                            <ProjectLinks />
+                            <ProjectLinks close={closeOuter} />
                         </div>
                     </Popover.Panel>
                 </Transition>

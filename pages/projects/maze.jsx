@@ -247,6 +247,10 @@ const Maze = () => {
         setSolButton(!solButton)
     }
 
+    useEffect(() => {
+        createMaze(mazeR, mazeC);
+    }, [])
+
     return (
         <Template
             title="Maze Generator"
@@ -271,24 +275,24 @@ const Maze = () => {
                 </div>
             </div>
 
-                <div className="my-8 flex justify-center rounded-md">
-                    <button
-                        type="button"
-                        className="relative inline-flex items-center rounded-l-md border border-highlight2 px-4 py-2 text-sm bg-highlight text-white font-medium  cursor-pointer p-4 w-fit duration-200 hover:brightness-110"
-                        onClick={() => createMaze(mazeR, mazeC)}
-                    >
-                        Generate
-                    </button>
-                    <button
-                        type="button"
-                        className="relative -ml-px inline-flex items-center rounded-r-md border border-highlight2 px-4 py-2 text-sm bg-highlight text-white font-medium  cursor-pointer p-4 w-fit duration-200 hover:brightness-110"
-                        onClick={() => drawSolution()}
-                    >
-                        {solButton ? 'Hide Solution' : 'Show Solution'}
-                    </button>
-                </div>
+            <div className="my-8 flex justify-center rounded-md">
+                <button
+                    type="button"
+                    className="relative inline-flex items-center rounded-l-md border border-highlight2 px-4 py-2 text-sm bg-highlight text-white font-medium  cursor-pointer p-4 w-fit duration-200 hover:brightness-110"
+                    onClick={() => createMaze(mazeR, mazeC)}
+                >
+                    Generate
+                </button>
+                <button
+                    type="button"
+                    className="relative -ml-px inline-flex items-center rounded-r-md border border-highlight2 px-4 py-2 text-sm bg-highlight text-white font-medium  cursor-pointer p-4 w-fit duration-200 hover:brightness-110"
+                    onClick={() => drawSolution()}
+                >
+                    {solButton ? 'Hide Solution' : 'Show Solution'}
+                </button>
+            </div>
 
-                <canvas className="min-h-[300px] w-full" ref={canvasRef} />
+            <canvas className="min-h-[300px] w-full" ref={canvasRef} />
         </Template>
     )
 }

@@ -1,35 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Transition } from '@headlessui/react'
 
 import Template from '../../components/Template'
 import Card from '../../components/Card'
+import DelayedTransition from '../../components/DelayedTransition'
 
 import data from '../../data/data.json'
-
-const DelayedTransition = (props) => {
-    const [show, setShow] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setShow(true)
-        }, props.delay)
-    }, [])
-
-    return (
-        <Transition
-            {...props}
-            show={show}
-        >
-            {props.children}
-        </Transition>
-    )
-}
 
 const Projects = () => {
     const [width, setWidth] = useState(0)
 
     useEffect(() => {
-        setWidth(window.innerWidth)
+        setWidth(window.innerWidth) 
     })
 
     return (

@@ -13,7 +13,7 @@ const projects = [
     {
         name: 'SAU Missions Dashboard',
         description: 'A simple frontend UI for Southern Adventist University which displays information about current student missionaries.',
-        href: 'https://missions.miromanestar.com',
+        href: '/projects/missions',
         icon: GlobeEuropeAfricaIcon,
     },
     {

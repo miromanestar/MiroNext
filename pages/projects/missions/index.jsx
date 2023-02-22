@@ -34,7 +34,7 @@ const Missions = () => (
                 <p className="mt-6 text-lg leading-8 text-gray-300">
                     The SAU Missions Dashboard is a simple website built for a large touchscreen kiosk.
                     It allows users to easily see information relating to missions opportunities at Southern Adventist University,
-                    including current student missionaries, SAU's presence around the globe, and opportunities
+                    including current student missionaries, SAU&apos;s presence around the globe, and opportunities
                     currently available for students here.
                 </p>
             </div>

@@ -2,7 +2,7 @@
     "projects": [
         {
           "name": "SAU Missions Dashboard",
-          "href": "https://missions.miromanestar.com",
+          "href": "/projects/missions",
           "description": "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
           "img": "https://i.imgur.com/MPHVBNT.jpg",
           "status": "In Progress",

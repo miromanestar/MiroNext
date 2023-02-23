@@ -42,7 +42,7 @@ const Missions = () => (
         <div className="relative overflow-hidden pt-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <img
-                    src="https://i.imgur.com/3TpefxU.png"
+                    src="https://i.imgur.com/bOpGpn9.jpg"
                     alt="App screenshot"
                     className="rounded-xl shadow-2xl ring-2 ring-white/10"
                     width={2432}

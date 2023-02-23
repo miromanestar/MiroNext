@@ -19,7 +19,7 @@ const projects = [
     {
         name: 'Youtube Gallery',
         description: 'A youtube gallery which grabs playlist data and displays it in a nice, response format with lightbox.',
-        href: 'https://miromanestar.github.io/Youtube-Gallery/',
+        href: '/projects/youtube',
         icon: SquaresPlusIcon,
     },
     {

@@ -2,7 +2,10 @@ import React from 'react'
 import {
     QueueListIcon,
     CursorArrowRippleIcon,
-    ArrowUpCircleIcon
+    CubeIcon,
+    CloudIcon,
+    CircleStackIcon,
+    TableCellsIcon
 } from '@heroicons/react/20/solid'
 
 import Template from '../../../components/Template'
@@ -21,7 +24,22 @@ const features = [
     {
         name: 'Strapi.',
         description: 'Strapi is an open-source headless CMS that allows for easy content management.',
-        icon: ArrowUpCircleIcon
+        icon: CloudIcon
+    },
+    {
+        name: 'Docker.',
+        description: 'Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.',
+        icon: CubeIcon
+    },
+    {
+        name: 'Nginx.',
+        description: 'Nginx is a web server which can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.',
+        icon: CircleStackIcon
+    },
+    {
+        name: 'MySQL.',
+        description: 'MySQL is an open-source relational database management system.',
+        icon: TableCellsIcon
     }
 ]
 
@@ -39,14 +57,12 @@ const Missions = () => (
                 </p>
             </div>
         </div>
-        <div className="relative overflow-hidden pt-16">
+        <div className="relative pt-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <img
                     src="https://i.imgur.com/bOpGpn9.jpg"
                     alt="App screenshot"
                     className="rounded-xl shadow-2xl ring-2 ring-white/10"
-                    width={2432}
-                    height={1442}
                 />
             </div>
         </div>

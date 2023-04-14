@@ -25,7 +25,7 @@ const projects = [
     {
         name: 'AutoAttend',
         description: 'A proof-of-concept application for automating attendance in a classroom setting via facial recognition.',
-        href: 'https://illuminatesau.com',
+        href: '/projects/autoattend',
         icon: ViewfinderCircleIcon,
     },
 ]

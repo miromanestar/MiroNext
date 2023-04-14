@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
 import {
     Bars3Icon,
-    LightBulbIcon,
+    ViewfinderCircleIcon,
     SquaresPlusIcon,
     GlobeEuropeAfricaIcon
 } from '@heroicons/react/24/outline'
@@ -23,10 +23,10 @@ const projects = [
         icon: SquaresPlusIcon,
     },
     {
-        name: 'Illuminate Website',
-        description: 'A website built for the Illuminate team at Enactus',
+        name: 'AutoAttend',
+        description: 'A proof-of-concept application for automating attendance in a classroom setting via facial recognition.',
         href: 'https://illuminatesau.com',
-        icon: LightBulbIcon,
+        icon: ViewfinderCircleIcon,
     },
 ]
 

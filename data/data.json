@@ -6,17 +6,29 @@
       "description": "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
       "img": "https://i.imgur.com/MPHVBNT.jpg",
       "status": "In Progress",
-      "category": "Tauri",
+      "category": "Full Stack Application",
       "featured": true,
       "icon": "GlobeEuropeAfricaIcon"
     },
     {
       "name": "Youtube Gallery",
       "href": "/projects/youtube",
-      "description": "A youtube gallery which grabs playlist data and displays it in a nice, response format with lightbox.",
+      "source": "https://github.com/miromanestar/Youtube-Gallery",
+      "description": "A proof-of-concept application levaraging open source face vectorization models and vector databases to perform automated classroom attendance tracking via facial recognition.",
       "img": "https://i.imgur.com/covKPgf.jpg",
       "status": "Complete",
       "category": "Web Widget",
+      "featured": true,
+      "icon": "SquaresPlusIcon"
+    },
+    {
+      "name": "AutoAttend",
+      "href": "/projects/autoattend",
+      "source": "https://github.com/miromanestar/AutoAttend",
+      "description": "A proof-of-concept application levaraging open source face vectorization models and vector databases to perform automated classroom attendance tracking via facial recognition.",
+      "img": "https://i.imgur.com/SeLhb3b.jpg",
+      "status": "Complete",
+      "category": "Full Stack Application",
       "featured": true,
       "icon": "SquaresPlusIcon"
     },
@@ -27,7 +39,7 @@
       "img": "https://i.imgur.com/OD77PLc.jpg",
       "status": "Complete",
       "category": "Website",
-      "featured": true,
+      "featured": false,
       "icon": "LightBulbIcon"
     },
     {

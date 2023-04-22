@@ -60,7 +60,7 @@
     },
     {
       "name": "RayCalc",
-      "href": "https://raycalc.com/",
+      "href": "/projects/raycalc",
       "description": "A cross-platform radiation dosimetry app build for emergency situations.",
       "img": "https://i.imgur.com/LpWvdv4.jpg",
       "status": "Complete",

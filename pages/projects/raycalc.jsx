@@ -22,7 +22,7 @@ const RayCalc = () => (
 
                 <p className="mt-10 text-2xl font-bold tracking-tight text-white">RayCalc 1.0</p>
                 <p className="mt-4 text-lg leading-8 text-gray-300">
-                    Raycalc originally was built with Swift in XCode, and exclusive to iOS. (It's also not polished at all and no longer developed).
+                    Raycalc originally was built with Swift in XCode, and represents one of my first forays into software development.
                     <br />
                     Visit this <a href="https://github.com/miromanestar/DosimetryCalculator" className="text-highlight">link</a> to see the repository for the original version.
                 </p>

@@ -3,7 +3,7 @@ import React from 'react'
 import Template from '../../components/Template'
 
 const RayCalc = () => (
-    <Template title="AutoAttend" names={['', 'RayCalc']}>
+    <Template title="RayCalc" names={['', 'RayCalc']}>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-5xl sm:text-center">
                 <h2 className="text-base font-semibold leading-7 text-highlight">A cross-platform radiation dosimetry app for emergency situations!</h2>

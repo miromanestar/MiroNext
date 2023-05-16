@@ -64,12 +64,12 @@ const HawaiiPRB = () => (
                 with basalt having negative values, and the dacite having positive values. Dimension two values appear to display tholeiitic and calc-alkaline 
                 differentiation trends, with the basalt displaying tholeiitic fractionation from Mg to Fe in olivine, and the dacite displaying calc-alkaline 
                 fractionation from Ca to Na to K in feldspar. Ti was found to be important in this dimension. Dimension three values may indicate alkalinity and 
-                "feldspathoids", with both the alkaline basalt and dacite having negative values.
+                &quot;feldspathoids&quot;, with both the alkaline basalt and dacite having negative values.
             </li>
             <li>
                 In the PRB, the plutonic sequence ranges from gabbro to tonalite to granite. Dimension one values indicate the degree of differentiation, 
-                with gabbro having negative values and granite having positive values. Dimension two values seem to distinguish the western PRB with "tholeiitic basement" 
-                from the eastern PRB with "calc-alkaline basement", with the western PRB having low values for Fe, Al, Na, and K, and the eastern PRB having high values. 
+                with gabbro having negative values and granite having positive values. Dimension two values seem to distinguish the western PRB with &quot;tholeiitic basement&quot; 
+                from the eastern PRB with &quot;calc-alkaline basement&quot;, with the western PRB having low values for Fe, Al, Na, and K, and the eastern PRB having high values. 
                 Fe was observed as going from low to high to low again, and thus found to be important in this dimension. Dimension three values may distinguish the number 
                 of melt/crystallization cycles, with the western PRB having perhaps two cycles, and the eastern PRB having more cycles. Na was found to be important in this dimension.
             </li>

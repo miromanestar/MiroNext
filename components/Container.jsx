@@ -7,7 +7,7 @@ const Container = ({ children, rightSidebar }) => (
             {children}
         </div>
 
-        <div className="flex-1 top-0 right-0 w-[400px] p-4 md:p-0">
+        <div className="flex-1 p-4 md:p-0">
             {rightSidebar}
         </div>
     </div>

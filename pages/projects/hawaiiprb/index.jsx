@@ -9,18 +9,18 @@ const HawaiiPRB = () => (
         title="Hawaii vs PRB Geochemical Analysis" 
         names={['', 'Hawaii vs PRB']}
         rightSidebar={
-        <div className="max-w-sm">
+        <div className="max-w-sm sticky top-3">
             <PaperDetails data={details} />
         </div>
     }
     >
         {/* <iframe src='/plots/hawaii_pca.html' className='w-full h-[1200px]' title='Hawaii vs PRB Geochemical Analysis'></iframe> */}
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl lg:px-8">
             <div className="mx-auto sm:text-center">
                 <h2 className="text-base font-semibold leading-7 text-highlight">Data Science</h2>
                 <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Comparing Igneous Geochemical Data from Hawaii and Southern California via Machine Learning</p>
                 <a href="https://github.com/miromanestar/LomaGeology" className='mt-2 text-md leading-7 text-gray-400'>View Source</a>
-                <p className="mt-4 text-lg leading-8 text-gray-300 text-justify">
+                <p className="mt-4 text-lg leading-8 text-gray-300">
                     Bi-plots are commonly used in geochemical analyses. However, their use can become cumbersome in the case of multi-variate analyses. 
                     Therefore, this paper explores the application of unsupervised machine learning techniques, specifically PCA and K-Means, to analyze 
                     large geochemical data sets from two distinct geological regions, Hawaii and the Peninsular Ranges Batholith (PRB) in Southern California. 
@@ -35,15 +35,35 @@ const HawaiiPRB = () => (
         <p className="mt-8 mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Theoretical Framework</p>
         <Technologies data={tech} />
 
+        <p className="mt-8 mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Hawaii and the Pensinular Ranges Batholith (PRB)</p>
 
-        <p className="mt-8 mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Data</p>
+        <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
+            Hawaii and the PRB in Southern  California share some similar geological attributes. Both geological locations are the result of plate tectonic 
+            forces and motion and are composed of rocks with a significant silica content. The rocks in both regions are sourced primarily from material in 
+            the interior of the Earth, and are composed of similar elements and isotopes, making them good candidates for comparison.
+        </p>
 
-        <div className="flex flex-wrap gap-3 justify-center mt-8">
-            <Table table={hawaiik3} />
-            <Table table={prbk3} />
-        </div>
+        <Table table={differences} boldFirst={false} />
+
+        <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
+        However, there are also notable differences between Hawaii and the PRB. The above table provides an overview on some of the important 
+        differences between Hawaii and the PRB in Southern California. The PRB was formed via subduction, where one tectonic plate moved under another. 
+        In contrast, Hawaii was formed by a &quot;hot spot&quot; plume in the mantle that produced magma which subsequently erupted through the Pacific plate oceanic crust. 
+        The PRB is made up of granitic types of rocks which have gone through several stages of melting and crystallization whereas the Hawaiian volcanoes are composed 
+        of volcanic rocks which have mostly gone through only one stage of melting and crystallization. Additionally, the PRB includes a significant amount of 
+        material from the crust, while Hawaiian volcanic rock comes mostly from material further down in the mantle. The higher silica PRB granitic rocks extend 
+        from the Riverside area of California down the length of the Baja Peninsula in Mexico, though this analysis only concerns the northern PRB. The lower silica 
+        Hawaiian volcanoes occur over the length of the island chain, although much of the data is from volcanoes on the Big Island at the end of the chain.
+        </p>
 
         <p className="mt-8 mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Results</p>
+
+        <div className="flex flex-wrap gap-3 justify-center mt-8">
+            <Table table={hawaiik3} boldFirst={true} />
+            <Table table={prbk3} boldFirst={true} />
+        </div>
+
+        <p className="mt-8 mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Conclusions</p>
 
         <p className=" sm:text-lg text-gray-300 mb-4">
             The geochemical interpretation of these plots was provided by one of the co-authors (BLC). Our analysis of rock geochemistry 
@@ -83,6 +103,16 @@ const HawaiiPRB = () => (
 
     </Template>
 )
+
+const differences = {
+    title: 'Differences Between Hawaii and the PRB',
+    headers: ['Hawaii', 'PRB'],
+    data: [
+        ['Mostly tholeiitic differntiation\n(Mg -> Fe)', 'Mostly calc-alkaline differentiation\n(Mg, Fe, Ca -> Na, K)'],
+        ['Basaltic (higher in e.g.. Mg, Fe, Ti, Ca, Crr', 'Granitic (higher in e.g. K, Rb, Cs, Zr, U)'],
+        ['Plume (mantle hotstop produced magma which erupted through the Pacific plate', 'Subduction (one tectonic plate moved under another generating intrusive and extrusive magma']
+    ]
+}
 
 const tech = [
     {
@@ -172,8 +202,8 @@ const prbk3 = {
     ]
 }
 
-const Table = ({ table }) => (
-    <div className="px-4 mt-4 sm:px-6 lg:px-8 w-max">
+const Table = ({ table, boldFirst }) => (
+    <div className="px-4 mt-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-white">{table.title}</h1>
@@ -197,12 +227,11 @@ const Table = ({ table }) => (
                 <tbody className="divide-y divide-gray-600">
                   {table.data.map((d) => (
                     <tr key={d[0]}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-bold text-white sm:pl-6">
-                        {d[0]}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-white">{d[1]}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-white">{d[2]}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-white">{d[3]}</td>
+                      {d.map((val, i) => i !== 0 ? (
+                        <td key={val} className="px-3 py-4 text-sm text-white">{val}</td>
+                      ) : (
+                        <td key={val} className={boldFirst ? 'py-4 pl-4 pr-3 text-sm font-bold text-white sm:pl-6' : 'px-3 pl-4 py-4 text-sm text-white'}>{val}</td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>

@@ -14,7 +14,7 @@
       "name": "Youtube Gallery",
       "href": "/projects/youtube",
       "source": "https://github.com/miromanestar/Youtube-Gallery",
-      "description": "A proof-of-concept application levaraging open source face vectorization models and vector databases to perform automated classroom attendance tracking via facial recognition.",
+      "description": "A simple script which generates an interactive gallery of Youtube videos from a playlist with client-side caching.",
       "img": "https://i.imgur.com/covKPgf.jpg",
       "status": "Complete",
       "category": "Web Widget",

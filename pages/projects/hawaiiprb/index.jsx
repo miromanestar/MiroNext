@@ -110,7 +110,7 @@ const differences = {
     data: [
         ['Mostly tholeiitic differntiation\n(Mg -> Fe)', 'Mostly calc-alkaline differentiation\n(Mg, Fe, Ca -> Na, K)'],
         ['Basaltic (higher in e.g.. Mg, Fe, Ti, Ca, Crr', 'Granitic (higher in e.g. K, Rb, Cs, Zr, U)'],
-        ['Plume (mantle hotstop produced magma which erupted through the Pacific plate', 'Subduction (one tectonic plate moved under another generating intrusive and extrusive magma']
+        ['Plume (mantle hotstop produced magma which erupted through the Pacific plate)', 'Subduction (one tectonic plate moved under another generating intrusive and extrusive magma)']
     ]
 }
 

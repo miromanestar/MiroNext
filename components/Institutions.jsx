@@ -1,32 +1,12 @@
-import { GlobeAltIcon } from '@heroicons/react/20/solid'
-import { BuildingLibraryIcon, CalendarIcon, AcademicCapIcon } from '@heroicons/react/24/solid'
+import { BuildingLibraryIcon, CalendarIcon, AcademicCapIcon, GlobeAltIcon } from '@heroicons/react/24/solid'
 
-const schools = [
-    {
-        institution: 'Southern Adventist University',
-        degree: 'Computer Science',
-        level: 'Masters of Science',
-        website: 'https://southern.edu',
-        date: 'August 2020 - May 2023',
-        imageUrl:
-            'https://www.thestudentloancalculator.com/wp-content/uploads/2020/08/mzi.gteaeddn-removebg-preview.png',
-    },
-    {
-        institution: 'University of North Georgia',
-        degree: 'Computer Science',
-        level: 'Associate of Science',
-        website: 'https://ung.edu',
-        date: 'August 2018 - May 2020',
-        imageUrl:
-            'https://i.imgur.com/FANSBxD.png',
-    },
-]
 
-const Education = () => {
+
+const Institutions = ({ institutions }) => {
     return (
-        <div className="bg-secondaryBg w-full py-8 px-4">
+        <div className="w-full py-8 px-4">
             <div className=" mx-auto max-w-screen-xl flex flex-wrap gap-6 justify-center">
-                {schools.map((s, i) => (
+                {institutions.map((s, i) => (
                     <div key={`institution-${i}`} className="w-full md:w-auto flex-1 divide-y divide-gray-500 rounded-lg bg-tertiaryBg shadow">
                         <div className="flex w-full items-center justify-between space-x-6 p-6">
                             <div className="flex-1 truncate">
@@ -41,10 +21,12 @@ const Education = () => {
                                     <BuildingLibraryIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
                                     {s.institution}
                                 </div>
-                                <div className="flex gap-2 mt-1 truncate text-sm text-gray-300">
-                                    <CalendarIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
-                                    {s.date}
-                                </div>
+                                {s.date && (
+                                    <div className="flex gap-2 mt-1 truncate text-sm text-gray-300">
+                                        <CalendarIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
+                                        {s.date}
+                                    </div>
+                                )}
                             </div>
                             {/* <img className="h-[100px] w-[100px] flex-shrink-0 rounded-full bg-highlight2 p-2" src={s.imageUrl} alt="" /> */}
                         </div>
@@ -69,4 +51,4 @@ const Education = () => {
     )
 }
 
-export default Education
+export default Institutions

@@ -35,7 +35,7 @@ const positions = [
 
 const Experience = () => {
     return (
-        <div className="bg-secondaryBg w-full pt-8 px-4">
+        <div className="w-full pt-8 px-4">
             <h2 className="text-center pb-8 text-3xl font-bold text-white sm:text-4xl">My Qualifications</h2>
             <div className="overflow-hidden bg-background shadow rounded-md max-w-screen-xl mx-auto">
                 <ul role="list" className="divide-y divide-gray-600">

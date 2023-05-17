@@ -203,7 +203,7 @@ const tech = [
 ]
 
 const details = {
-    title: 'Paper Details',
+    title: 'Journal',
     journal: 'Earth Science Informatics',
     published: 'April 27, 2023',
     status: 'In Progress',

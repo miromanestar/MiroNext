@@ -60,12 +60,11 @@ const HawaiiPRB = () => (
         <p className="mt-8 mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Results</p>
 
         <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
-            The following figures show the results of the PCA and K-Means analysis for Hawaii and the PRB. After data cleanup and preparation,
-            there were 10,476 samples from Hawaii and 532 samples from the PRB. Approximately 20% of Hawaii samples and 50% of PRB samples were filtered out
+            The following figures show the results of the PCA and K-Means analysis for Hawaii and the PRB. Approximately 20% of Hawaii samples and 50% of PRB samples were filtered out
             before analysis due to missing features. Imputation was not used at any point during this anaylsis as it tends to destroy useful variations which
-            are critical for unsupervised machine learning methods. Three dimensions were chosen because it was found that over 84% of the variance for Hawaii
-            and 88% for the PRB was contained within them. Finally, three clusters were chosen because it was found to be the optimal number
-            of clusters through the application of the elbow method.
+            are critical for unsupervised machine learning methods. After data cleanup and preparation, there were 10,476 samples from Hawaii and 532 samples from the PRB. 
+            Three dimensions were chosen because it was found that over 84% of the variance for Hawaii and 88% for the PRB was contained within them. 
+            Finally, three clusters were chosen because it was found to be the optimal number of clusters through the application of the elbow method.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

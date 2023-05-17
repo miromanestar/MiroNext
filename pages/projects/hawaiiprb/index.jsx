@@ -109,7 +109,7 @@ const HawaiiPRB = () => (
         </div>
 
         <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
-            It is useful to note that the the clusters were reordered to match the order of the volcanic sequences in Hawaii in the PRB. Thus, cluster one for Hawaii
+            It is useful to note that the the clusters were reordered to match the order of the igneous sequences in Hawaii and the PRB. Thus, cluster one for Hawaii
             can be found to relate to basalt, cluster two to andesite, and cluster three to dacite. In the PRB, cluster one relates to gabbro, cluster two to tonalite,
             and cluster three to to granite. This was done deliberately to make the interpretation of the data more intuitive.
         </p>

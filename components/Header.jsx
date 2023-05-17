@@ -4,23 +4,23 @@ import { Popover, Transition } from '@headlessui/react'
 import {
     Bars3Icon,
     ViewfinderCircleIcon,
-    SquaresPlusIcon,
+    LightBulbIcon,
     GlobeEuropeAfricaIcon
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
 const projects = [
+    {
+        name: 'Hawaii and Southern California Geochemistry',
+        description: 'A research project comparing the geochemistry of the Hawaiian Islands and Southern California',
+        href: '/projects/hawaiiprb',
+        icon: LightBulbIcon,
+    },
     {
         name: 'SAU Missions Dashboard',
         description: 'A simple frontend UI for Southern Adventist University which displays information about current student missionaries.',
         href: '/projects/missions',
         icon: GlobeEuropeAfricaIcon,
-    },
-    {
-        name: 'Youtube Gallery',
-        description: 'A youtube gallery which grabs playlist data and displays it in a nice, response format with lightbox.',
-        href: '/projects/youtube',
-        icon: SquaresPlusIcon,
     },
     {
         name: 'AutoAttend',

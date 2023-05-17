@@ -45,10 +45,10 @@ const features = [
 
 const Missions = () => (
     <Template title="SAU Missions Dashboard">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-5xl sm:text-center">
-                <h2 className="text-base font-semibold leading-7 text-highlight">Built with React, Tauri and Strapi</h2>
-                <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">SAU Missions Dashboard</p>
+        <div className="mx-auto max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-5xl">
+                <h2 className="text-base font-semibold leading-7 text-highlight text-center">Built with React, Tauri and Strapi</h2>
+                <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">SAU Missions Dashboard</p>
                 <p className="mt-6 text-lg leading-8 text-gray-300">
                     The SAU Missions Dashboard is a simple website built for a large touchscreen kiosk.
                     It allows users to easily see information relating to missions opportunities at Southern Adventist University,
@@ -58,7 +58,7 @@ const Missions = () => (
             </div>
         </div>
         <div className="relative pt-16">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl lg:px-8">
                 <img
                     src="https://i.imgur.com/bOpGpn9.jpg"
                     alt="App screenshot"

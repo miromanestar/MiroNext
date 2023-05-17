@@ -1,6 +1,17 @@
 {
   "projects": [
     {
+      "name": "Hawaii and Southern California Geochemical Comparison",
+      "href": "/projects/hawaiiprb",
+      "source": "https://github.com/miromanestar/LomaGeology",
+      "description": "A research project comparing the geochemistry of the Hawaiian Islands and Southern California. Done in collaboration with the Geoscience Research Institute and Southern Adventist University.",
+      "img": "https://i.imgur.com/dcXTVGm.jpg",
+      "status": "Complete",
+      "category": "Research",
+      "featured": true,
+      "icon": "SquaresPlusIcon"
+    },
+    {
       "name": "SAU Missions Dashboard",
       "href": "/projects/missions",
       "description": "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
@@ -11,17 +22,6 @@
       "icon": "GlobeEuropeAfricaIcon"
     },
     {
-      "name": "Youtube Gallery",
-      "href": "/projects/youtube",
-      "source": "https://github.com/miromanestar/Youtube-Gallery",
-      "description": "A simple script which generates an interactive gallery of Youtube videos from a playlist with client-side caching.",
-      "img": "https://i.imgur.com/covKPgf.jpg",
-      "status": "Complete",
-      "category": "Web Widget",
-      "featured": true,
-      "icon": "SquaresPlusIcon"
-    },
-    {
       "name": "AutoAttend",
       "href": "/projects/autoattend",
       "source": "https://github.com/miromanestar/AutoAttend",
@@ -30,6 +30,17 @@
       "status": "Complete",
       "category": "Full Stack Application",
       "featured": true,
+      "icon": "SquaresPlusIcon"
+    },
+    {
+      "name": "Youtube Gallery",
+      "href": "/projects/youtube",
+      "source": "https://github.com/miromanestar/Youtube-Gallery",
+      "description": "A simple script which generates an interactive gallery of Youtube videos from a playlist with client-side caching.",
+      "img": "https://i.imgur.com/covKPgf.jpg",
+      "status": "Complete",
+      "category": "Web Widget",
+      "featured": false,
       "icon": "SquaresPlusIcon"
     },
     {

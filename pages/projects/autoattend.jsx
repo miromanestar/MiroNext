@@ -45,11 +45,11 @@ const features = [
 
 const AutoAttend = () => (
     <Template title="AutoAttend" names={['', 'AutoAttend']}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl lg:px-8">
             <div className="mx-auto max-w-5xl sm:text-center">
-                <h2 className="text-base font-semibold leading-7 text-highlight">Automated attendance tracking via facial recognition</h2>
-                <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">AutoAttend</p>
-                <a href="https://github.com/miromanestar/AutoAttend" className='mt-2 text-md leading-7 text-gray-400'>View Source</a>
+                <h2 className="text-base font-semibold leading-7 text-highlight text-center">Automated attendance tracking via facial recognition</h2>
+                <p className="mt-2 mb-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">AutoAttend</p>
+                <a href="https://github.com/miromanestar/AutoAttend" className='text-md leading-7 text-gray-400 hover:text-highlight duration-200 flex justify-center items-center'><img src="/images/github.svg" className='white-filter mr-2 h-[20px]' />View Source</a>
                 <p className="mt-4 text-lg leading-8 text-gray-300">
                 A proof-of-concept application levaraging open source face vectorization models and vector databases to perform
                 automated classroom attendance tracking via facial recognition. It uses a host of open source technologies, all
@@ -58,7 +58,7 @@ const AutoAttend = () => (
             </div>
         </div>
         <div className="relative pt-16">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl lg:px-8">
                 <img
                     src="https://i.imgur.com/c82PxpH.png"
                     alt="App screenshot"

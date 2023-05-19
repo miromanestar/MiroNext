@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false })
 
-const PCA3D = ({ data, title }) => {
+const PCA2D = ({ data, title, xaxis, yaxis }) => {
 
     const pca = data
 
@@ -25,16 +25,24 @@ const PCA3D = ({ data, title }) => {
         })
     }
 
-    const features3d = []
-    pca.features.forEach(f => features3d.push('', f))
-
-    const scale = (arr) => arr.map((val) => val * 8)
-
-    const lines3d = {
-        PC1: scale(pca.lines.PC1),
-        PC2: scale(pca.lines.PC2),
-        PC3: scale(pca.lines.PC3),
-    }
+    const loadingLines = pca.features.map((f, i) => {
+        return {
+            type: 'line',
+            x0: 0,
+            y0: 0,
+            x1: pca.rotation[xaxis][i] * 8,
+            y1: pca.rotation[yaxis][i] * 8,
+            line: {
+                color: 'white',
+                width: 2,
+            },
+            label: {
+                text: f,
+                textposition: 'end',
+            },
+            showarrow: true
+        }
+    })
 
     return (
         <div className="w-full h-full rounded-lg overflow-hidden ring-2 ring-white/10">
@@ -43,8 +51,7 @@ const PCA3D = ({ data, title }) => {
                     {
                         x: clusteredData[1].PC1,
                         y: clusteredData[1].PC2,
-                        z: clusteredData[1].PC3,
-                        type: 'scatter3d',
+                        type: 'scatter',
                         mode: 'markers',
                         name: 'Cluster 1',
                         marker: {
@@ -55,8 +62,7 @@ const PCA3D = ({ data, title }) => {
                     {
                         x: clusteredData[2].PC1,
                         y: clusteredData[2].PC2,
-                        z: clusteredData[2].PC3,
-                        type: 'scatter3d',
+                        type: 'scatter',
                         mode: 'markers',
                         name: 'Cluster 2',
                         marker: {
@@ -67,8 +73,7 @@ const PCA3D = ({ data, title }) => {
                     {
                         x: clusteredData[3].PC1,
                         y: clusteredData[3].PC2,
-                        z: clusteredData[3].PC3,
-                        type: 'scatter3d',
+                        type: 'scatter',
                         mode: 'markers',
                         name: 'Cluster 3',
                         marker: {
@@ -76,19 +81,6 @@ const PCA3D = ({ data, title }) => {
                             color: '#00ba38',
                         },
                     },
-                    {
-                        x: lines3d.PC1,
-                        y: lines3d.PC2,
-                        z: lines3d.PC3,
-                        showlegend: false,
-                        type: 'scatter3d',
-                        mode: 'lines+markers+text',
-                        marker: {
-                            size: 2,
-                            color: 'white',
-                        },
-                        text: features3d,
-                    }
                 ]}
                 layout={{
                     title: {
@@ -96,17 +88,11 @@ const PCA3D = ({ data, title }) => {
                         automargin: true,
                         pad: { t: 5 },
                     },
-                    margin: { b: 0, t: 0, l: 0, r: 26 },
-                    scene: {
-                        xaxis: { title: 'Dim1', gridcolor: '#6b7280', zerolinecolor: 'white'},
-                        yaxis: { title: 'Dim2', gridcolor: '#6b7280', zerolinecolor: 'white' },
-                        zaxis: { title: 'Dim3', gridcolor: '#6b7280', zerolinecolor: 'white' },
-                    },
+        
+                    margin: { b: 26, t: 26, l: 26, r: 40 },
+                    shapes: loadingLines,
                     modebar: { orientation: 'v' },
-                    autosize: true,
-                    legend: { 
-                        x:0, 
-                        y: 0,
+                    legend: {
                         bgcolor: '#434C5E',
                         bordercolor: '#3B4252',
                         itemsizing: 'constant',
@@ -117,6 +103,14 @@ const PCA3D = ({ data, title }) => {
                     font: {
                         color: 'white',
                     },
+                    xaxis: {
+                        title: xaxis,
+                        color: 'white',
+                    },
+                    yaxis: {
+                        title: yaxis,
+                        color: 'white',
+                    }
                 }}
                 useResizeHandler={true}
                 style={{ width: '100%', height: '100%' }}
@@ -125,4 +119,4 @@ const PCA3D = ({ data, title }) => {
     )
 }
 
-export default PCA3D
+export default PCA2D

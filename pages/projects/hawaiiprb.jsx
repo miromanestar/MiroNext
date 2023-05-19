@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 import Template from '../../components/Template'
 import Table from '../../components/Table'
@@ -94,8 +95,8 @@ const HawaiiPRB = () => (
 
         <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
             Because three dimensions were selected, three-dimensional plots using the R rgl package was created for each region. A full window plot for Hawaii can be
-            accessed <a href="/plots/hawaii" className="text-highlight duration-100 hover:text-highlight2">here</a> and the plot for the 
-            PRB can be accessed <a href="/plots/prb" className="text-highlight duration-100 hover:text-highlight2">here</a>. 
+            accessed <Link href="/plots/hawaii" className="text-highlight duration-100 hover:text-highlight2">here</Link> and the plot for the 
+            PRB can be accessed <Link href="/plots/prb" className="text-highlight duration-100 hover:text-highlight2">here</Link>. 
             Please note that the coloring will not be the same as the plots shown above. However, if one were to line up the axes of the 3D plots
             with its corresponding 2D plot, the distribution of data would be the same.
         </p>

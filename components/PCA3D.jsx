@@ -3,16 +3,9 @@ import dynamic from 'next/dynamic'
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false })
 
-import Template from '../components/Template'
+const PCA3D = ({ data, title }) => {
 
-import pca from '../data/prb.json'
-
-const Test = () => {
-
-    const mappedColors = pca.clusters.map((cluster) => {
-        const t = { 1: 'blue', 2: 'red', 3: 'green' }
-        return t[cluster]
-    })
+    const pca = data
 
     const clusteredData = {}
     for (let i = 0; i < pca.clusters.length; i++) {
@@ -32,27 +25,6 @@ const Test = () => {
         })
     }
 
-    const loadingLines = pca.features.map((f, i) => {
-        return {
-            type: 'line',
-            x0: 0,
-            y0: 0,
-            z0: 0,
-            x1: pca.rotation.PC1[i] * 10,
-            y1: pca.rotation.PC2[i] * 10,
-            z1: pca.rotation.PC3[i] * 10,
-            line: {
-                color: 'black',
-                width: 2,
-            },
-            label: {
-                text: f,
-                textposition: 'end',
-            },
-            showarrow: true
-        }
-    })
-
     const features3d = []
     pca.features.forEach(f => features3d.push('', f))
 
@@ -65,7 +37,7 @@ const Test = () => {
     }
 
     return (
-        <Template title="Testing Page">
+        <div className="w-full h-full rounded-lg overflow-hidden ring-2 ring-white/10">
             <Plot
                 data={[
                     {
@@ -77,7 +49,7 @@ const Test = () => {
                         name: 'Cluster 1',
                         marker: {
                             size: 4,
-                            color: 'blue',
+                            color: '#619cff',
                         },
                     },
                     {
@@ -89,7 +61,7 @@ const Test = () => {
                         name: 'Cluster 2',
                         marker: {
                             size: 4,
-                            color: 'red',
+                            color: '#f8766d',
                         },
                     },
                     {
@@ -101,7 +73,7 @@ const Test = () => {
                         name: 'Cluster 3',
                         marker: {
                             size: 4,
-                            color: 'green',
+                            color: '#00ba38',
                         },
                     },
                     {
@@ -113,74 +85,44 @@ const Test = () => {
                         mode: 'lines+markers+text',
                         marker: {
                             size: 2,
-                            color: 'black',
+                            color: 'white',
                         },
                         text: features3d,
                     }
                 ]}
                 layout={{
                     title: {
-                        text: 'PRB PCA and K-Means Bi-Plot',
-                        yref: 'paper',
-                        automargin: true
+                        text: title,
+                        automargin: true,
+                        pad: { t: 5 },
                     },
                     margin: { b: 0, t: 0, l: 0, r: 26 },
                     scene: {
-                        xaxis: { title: 'Dim1' },
-                        yaxis: { title: 'Dim2' },
-                        zaxis: { title: 'Dim3' },
+                        xaxis: { title: 'Dim1', gridcolor: '#6b7280', zerolinecolor: 'white'},
+                        yaxis: { title: 'Dim2', gridcolor: '#6b7280', zerolinecolor: 'white' },
+                        zaxis: { title: 'Dim3', gridcolor: '#6b7280', zerolinecolor: 'white' },
                     },
                     modebar: { orientation: 'v' },
                     autosize: true,
-                    legend: { x:0, y: 0 }
-                    
+                    legend: { 
+                        x:0, 
+                        y: 0,
+                        bgcolor: '#434C5E',
+                        bordercolor: '#3B4252',
+                        itemsizing: 'constant',
+                        orientation: 'v',
+                    },
+                    plot_bgcolor: '#000',
+                    paper_bgcolor: '#2E3440',
+                    font: {
+                        color: 'white',
+                    },
                 }}
                 useResizeHandler={true}
                 style={{ width: '100%', height: '100%' }}
             />
-
-            {/* <Plot
-                data={[
-                    {
-                        x: clusteredData[1].PC1,
-                        y: clusteredData[1].PC2,
-                        type: 'scatter',
-                        mode: 'markers',
-                        name: 'Cluster 1',
-                        marker: {
-                            size: 4,
-                            color: 'blue',
-                        },
-                    },
-                    {
-                        x: clusteredData[2].PC1,
-                        y: clusteredData[2].PC2,
-                        type: 'scatter',
-                        mode: 'markers',
-                        name: 'Cluster 2',
-                        marker: {
-                            size: 4,
-                            color: 'red',
-                        },
-                    },
-                    {
-                        x: clusteredData[3].PC1,
-                        y: clusteredData[3].PC2,
-                        type: 'scatter',
-                        mode: 'markers',
-                        name: 'Cluster 3',
-                        marker: {
-                            size: 4,
-                            color: 'green',
-                        },
-                    },
-                ]}
-                layout={{
-                    shapes: loadingLines
-                }}
-            /> */}
-        </Template>
+        </div>
     )
 }
 
-export default Test
+export default PCA3D

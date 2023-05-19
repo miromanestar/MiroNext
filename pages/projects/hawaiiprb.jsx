@@ -1,9 +1,13 @@
 import React from 'react'
 
-import Template from '../../../components/Template'
-import Table from '../../../components/Table'
-import PaperDetails from '../../../components/PaperDetails'
-import Technologies from '../../../components/Technologies'
+import Template from '../../components/Template'
+import Table from '../../components/Table'
+import PaperDetails from '../../components/PaperDetails'
+import Technologies from '../../components/Technologies'
+import PCA3D from '../../components/PCA3D'
+
+import hawaii from '../../data/hawaii.json'
+import prb from '../../data/prb.json'
 
 const HawaiiPRB = () => (
     <Template
@@ -89,12 +93,17 @@ const HawaiiPRB = () => (
         </div>
 
         <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
-            Because three dimensions were selected, three-dimensional plots using the R rgl package was created for each region. The plot for Hawaii can be
-            accessed <a href="/plots/hawaii_pca.html" className="text-highlight duration-100 hover:text-highlight2">here</a> and the plot for the 
-            PRB can be accessed <a href="/plots/prb_pca.html" className="text-highlight duration-100 hover:text-highlight2">here</a>. 
+            Because three dimensions were selected, three-dimensional plots using the R rgl package was created for each region. A full window plot for Hawaii can be
+            accessed <a href="/plots/hawaii" className="text-highlight duration-100 hover:text-highlight2">here</a> and the plot for the 
+            PRB can be accessed <a href="/plots/prb" className="text-highlight duration-100 hover:text-highlight2">here</a>. 
             Please note that the coloring will not be the same as the plots shown above. However, if one were to line up the axes of the 3D plots
             with its corresponding 2D plot, the distribution of data would be the same.
         </p>
+
+        <div className="flex gap-3 flex-col md:flex-row">
+            <PCA3D data={hawaii} title='Hawaii 3D PCA Bi-Plot' />
+            <PCA3D data={prb} title='PRB 3D PCA Bi-Plot' />
+        </div>
 
         <p className=" sm:text-lg text-gray-300 mb-4 mt-8">
             The below tables show the average value of a given feature in each of the three clusters. It is important to note that the averages were calculated using

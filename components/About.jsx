@@ -19,7 +19,7 @@ const About = () => (
                     </p>
                 </Bounce>
             </div>
-            <div className="relative z-20 grid grid-cols-2 gap-4 mt-8 overflow-hidden px-4 lg:px-0 lg:pr-8">
+            <div className="relative z-20 grid grid-cols-2 gap-4 mt-8 px-4 lg:px-0 lg:pr-8">
                 <Fade 
                     triggerOnce={true}
                     direction="right"

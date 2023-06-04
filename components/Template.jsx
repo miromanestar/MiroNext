@@ -9,7 +9,7 @@ const Template = ({title, names, children, rightSidebar}) => (
         <Breadcrumbs names={names} />
 
         <Head>
-            <title>Miro | {title}</title>
+            <title>{`Miro | ${title}`}</title>
         </Head>
 
         <Container rightSidebar={rightSidebar}>

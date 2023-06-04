@@ -31,7 +31,7 @@ const schools = [
     {
         institution: 'Southern Adventist University',
         degree: 'Computer Science',
-        level: 'Masters of Science',
+        level: 'MS & BS',
         website: 'https://southern.edu',
         date: 'August 2020 - May 2023',
         imageUrl:

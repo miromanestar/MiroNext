@@ -10,6 +10,8 @@ const App = ({ Component, pageProps }) => {
                 <title>Miro&apos;s Portfolio</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <link rel="icon" type="image/x-icon" href="/mm-logo.png" />
+
+                <meta name="description" content="Hello, and welcome to my portfolio! I'm a full-stack software engineer with a passion for creating beautiful, intuitive, and functional web applications." />
             </Head>
 
             <Header />

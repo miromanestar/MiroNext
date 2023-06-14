@@ -25,8 +25,8 @@ const About = () => (
                     direction="right"
                     cascade={true}
                 >
-                    <img className="w-full rounded-lg" src="https://i.imgur.com/WZAyzsW.jpg" alt="office content 1" />
-                    <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://i.imgur.com/SpcWLGN.jpg" alt="office content 2" />
+                    <div className="h-full flex items-center"><img className="w-full rounded-lg" src="https://i.imgur.com/6ogYMux.png" alt="office content 1" /></div>
+                    <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://i.imgur.com/tFB4rFn.jpg" alt="office content 2" />
                 </Fade>
             </div>
         </div>

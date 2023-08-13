@@ -2,6 +2,16 @@ import { CalendarIcon, MapPinIcon, BuildingOffice2Icon } from '@heroicons/react/
 
 const positions = [
     {
+        title: 'Software Engineer A',
+        type: 'Full Time',
+        location: 'Chattanooga, TN',
+        company: 'Tennessee Valley Authority',
+        start: '2020-01-07',
+        end: '2020-01-07',
+        startFull: 'August 2023',
+        endFull: 'Present',
+    },
+    {
         title: 'Software Engineering Intern',
         type: 'Part Time',
         location: 'Chattanooga, TN',
@@ -9,27 +19,17 @@ const positions = [
         start: '2020-01-07',
         end: '2020-01-07',
         startFull: 'February 2022',
-        endFull: 'Present',
+        endFull: 'August 2023',
     },
     {
-        title: 'Computer Technician',
-        type: 'Part Time',
-        location: 'Cumming, GA',
-        company: 'Experimax',
-        start: '2020-01-14',
-        end: '2020-01-14',
-        startFull: 'July 2021',
-        endFull: 'August 2021',
-    },
-    {
-        title: 'Student Tutor',
+        title: 'Resident Assistant',
         type: 'Part Time',
         location: 'Collegedale, TN',
         company: 'Southern Adventist University',
         start: '2020-01-07',
         end: '2020-01-07',
-        startFull: 'October 2020',
-        endFull: 'May 2021',
+        startFull: 'August 2021',
+        endFull: 'May 2023',
     },
 ]
 

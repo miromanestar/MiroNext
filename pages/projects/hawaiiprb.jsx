@@ -211,10 +211,10 @@ const tech = [
 ]
 
 const details = {
-    title: 'Journal',
-    journal: 'Earth Science Informatics',
+    title: 'Thesis',
+    journal: 'Southern Adventist University',
     published: 'April 27, 2023',
-    status: 'In Progress',
+    status: 'Complete',
     authors: [
         'Miro I. Manestar, MS',
         'Germán H. Alférez, PhD',

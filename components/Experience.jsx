@@ -12,6 +12,16 @@ const positions = [
         endFull: 'Present',
     },
     {
+        title: 'Adjunct Professor',
+        type: 'Part Time',
+        location: 'Collegedale, TN',
+        company: 'Southern Adventist University',
+        start: '2024-01-07',
+        end: '2024-05-08',
+        startFull: 'January 2024',
+        endFull: 'May 2024',
+    },
+    {
         title: 'Software Engineering Intern',
         type: 'Part Time',
         location: 'Chattanooga, TN',
@@ -20,17 +30,7 @@ const positions = [
         end: '2020-01-07',
         startFull: 'February 2022',
         endFull: 'August 2023',
-    },
-    {
-        title: 'Resident Assistant',
-        type: 'Part Time',
-        location: 'Collegedale, TN',
-        company: 'Southern Adventist University',
-        start: '2020-01-07',
-        end: '2020-01-07',
-        startFull: 'August 2021',
-        endFull: 'May 2023',
-    },
+    }
 ]
 
 const Experience = () => {

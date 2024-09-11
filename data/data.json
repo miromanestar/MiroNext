@@ -44,14 +44,12 @@
       "icon": "SquaresPlusIcon"
     },
     {
-      "name": "Illuminate Website",
-      "href": "https://illuminatesau.com",
-      "description": "A website built for the Illuminate team at Enactus",
-      "img": "https://i.imgur.com/OD77PLc.jpg",
+      "name": "Snake in Rust",
+      "href": "/projects/snake",
+      "description": "A very simple snake game built in Rust and compiled for WASM",
+      "img": "https://i.imgur.com/yXQByXt.jpeg",
       "status": "Complete",
-      "category": "Website",
-      "featured": false,
-      "icon": "LightBulbIcon"
+      "category": "Game"
     },
     {
       "name": "Constraint Based Programming",

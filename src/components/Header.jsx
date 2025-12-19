@@ -128,7 +128,7 @@ const Header = () => {
       {({ close: closeOuter }) => (
         <>
           <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="bg-tertiaryBg/10 mt-3 flex items-center justify-between rounded-lg px-4 py-2 drop-shadow-md backdrop-blur-sm md:space-x-10 md:p-3">
+            <div className="bg-tertiaryBg/10 mt-3 flex items-center justify-between rounded-lg px-4 py-2 shadow-sm outline-1 outline-gray-300/10 drop-shadow-md backdrop-blur-sm md:space-x-10 md:p-3">
               <div className="flex items-center gap-6">
                 <div className="flex justify-start">
                   <Link href="/">

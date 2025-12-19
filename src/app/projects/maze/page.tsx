@@ -307,7 +307,7 @@ const Maze = () => {
               min="4"
               max="35"
               value={mazeR}
-              onChange={(e) => setMazeR(e.target.value)}
+              onChange={(e) => setMazeR(parseInt(e.target.value))}
             />
             <output>{mazeR}</output>
           </div>
@@ -322,7 +322,7 @@ const Maze = () => {
               min="4"
               max="35"
               value={mazeC}
-              onChange={(e) => setMazeC(e.target.value)}
+              onChange={(e) => setMazeC(parseInt(e.target.value))}
             />
             <output>{mazeC}</output>
           </div>

@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import Breadcrumbs from "./Breadcrumbs";
 import Container from "./Container";
 
-const Template = ({ title, names, children, rightSidebar }) => (
+const Template = ({ title, names, children, rightSidebar = <></> }) => (
   <div>
     <Banner title={title} />
     <Breadcrumbs names={names} />

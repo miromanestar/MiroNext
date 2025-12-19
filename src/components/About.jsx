@@ -29,16 +29,16 @@ const About = () => (
           <div className="flex h-full items-center">
             <Image
               className="w-full rounded-lg shadow-lg"
-              src="https://i.imgur.com/0QGAjUX.jpeg"
-              alt="office content 1"
-              width={696}
-              height={1280}
+              src="https://i.imgur.com/zmpb9Fx.jpeg"
+              alt="Miro Manestar"
+              width={708}
+              height={957}
             />
           </div>
           <Image
             className="mt-4 h-[80%] w-full rounded-lg object-cover object-right shadow-lg lg:mt-10"
             src="https://i.imgur.com/UyGBwka.jpeg"
-            alt="office content 2"
+            alt="Tech image"
             width={760}
             height={506}
           />

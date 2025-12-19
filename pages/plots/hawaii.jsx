@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import PCA3D from '../../components/PCA3D'
+import PCA3D from "../../components/PCA3D";
 
-import hawaii from '../../data/hawaii.json'
+import hawaii from "../../data/hawaii.json";
 
 const Hawaii = () => (
-    <div className="w-screen h-full p-4 pt-24">
-        <PCA3D data={hawaii} title="Hawaii PCA 3D Bi-Plot (n=10,476)" />
-    </div>
-)
+  <div className="h-full w-screen p-4 pt-24">
+    <PCA3D data={hawaii} title="Hawaii PCA 3D Bi-Plot (n=10,476)" />
+  </div>
+);
 
-export default Hawaii
+export default Hawaii;

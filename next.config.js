@@ -6,6 +6,6 @@ const nextConfig = {
   //   config.experiments = { asyncWebAssembly: true }
   //   return config
   // }
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

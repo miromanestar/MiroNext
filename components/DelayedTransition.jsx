@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { Transition } from '@headlessui/react'
+import React, { useEffect, useState } from "react";
+import { Transition } from "@headlessui/react";
 
 const DelayedTransition = (props) => {
-    const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setShow(true)
-        }, props.delay)
-    }, [])
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(true);
+    }, props.delay);
+  }, []);
 
-    return (
-        <Transition
-            {...props}
-            show={show}
-        >
-            {props.children}
-        </Transition>
-    )
-}
+  return (
+    <Transition {...props} show={show}>
+      {props.children}
+    </Transition>
+  );
+};
 
-export default DelayedTransition
+export default DelayedTransition;

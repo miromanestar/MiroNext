@@ -39,22 +39,22 @@ const positions = [
 
 const Experience = () => {
   return (
-    <div className="w-full pt-8 px-4">
-      <h2 className="text-center pb-8 text-3xl font-bold text-white sm:text-4xl">
+    <div className="w-full px-4 pt-8">
+      <h2 className="pb-8 text-center text-3xl font-bold text-white sm:text-4xl">
         My Qualifications
       </h2>
-      <div className="overflow-hidden bg-background shadow rounded-md max-w-screen-xl mx-auto">
+      <div className="bg-background mx-auto max-w-(--breakpoint-xl) overflow-hidden rounded-md shadow-sm">
         <ul role="list" className="divide-y divide-gray-600">
           {positions.map((position, i) => (
             <li key={i}>
               <div className="block">
                 <div className="px-4 py-4 sm:px-6">
                   <div className="flex items-center justify-between">
-                    <p className="truncate text-sm font-medium text-highlight">
+                    <p className="text-highlight truncate text-sm font-medium">
                       {position.title}
                     </p>
-                    <div className="ml-2 flex flex-shrink-0">
-                      <p className="inline-flex rounded-full bg-nordgreen px-2 text-xs font-semibold leading-5 text-background">
+                    <div className="ml-2 flex shrink-0">
+                      <p className="bg-nordgreen text-background inline-flex rounded-full px-2 text-xs leading-5 font-semibold">
                         {position.type}
                       </p>
                     </div>
@@ -63,14 +63,14 @@ const Experience = () => {
                     <div className="sm:flex">
                       <p className="flex items-center text-sm text-gray-500">
                         <BuildingOffice2Icon
-                          className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                          className="mr-1.5 h-5 w-5 shrink-0 text-gray-400"
                           aria-hidden="true"
                         />
                         {position.company}
                       </p>
                       <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
                         <MapPinIcon
-                          className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                          className="mr-1.5 h-5 w-5 shrink-0 text-gray-400"
                           aria-hidden="true"
                         />
                         {position.location}
@@ -78,7 +78,7 @@ const Experience = () => {
                     </div>
                     <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
                       <CalendarIcon
-                        className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                        className="mr-1.5 h-5 w-5 shrink-0 text-gray-400"
                         aria-hidden="true"
                       />
                       <p>

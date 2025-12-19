@@ -128,7 +128,7 @@ const Header = () => {
       {({ close: closeOuter }) => (
         <>
           <div className="sticky mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="bg-tertiaryBg/10 mt-3 flex items-center justify-between rounded-lg px-4 py-2 shadow-sm outline-1 outline-gray-300/10 drop-shadow-md backdrop-blur-sm md:space-x-10 md:p-3">
+            <div className="bg-tertiaryBg/10 mt-3 flex items-center justify-between rounded-lg px-4 py-2 shadow-sm ring-1 ring-gray-300/10 drop-shadow-md backdrop-blur-sm md:space-x-10 md:p-3">
               <div className="flex items-center gap-6">
                 <div className="flex justify-start">
                   <Link href="/">
@@ -184,7 +184,7 @@ const Header = () => {
                           leaveTo="opacity-0 translate-y-1"
                         >
                           <Popover.Panel className="absolute top-0 left-1/2 z-10 mt-5 w-screen max-w-md -translate-x-1/2 transform px-2 pt-8 sm:px-0">
-                            <div className="ring-opacity-5 overflow-hidden rounded-lg shadow-lg ring-1 ring-black">
+                            <div className="ring-opacity-5 overflow-hidden rounded-lg shadow-lg ring-1 ring-gray-300/15">
                               <ProjectLinks close={close} />
                             </div>
                           </Popover.Panel>

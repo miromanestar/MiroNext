@@ -23,7 +23,7 @@ const positions = [
     start: "2024-01-07",
     end: "2024-05-08",
     startFull: "January 2024",
-    endFull: "May 2024",
+    endFull: "Present",
   },
   {
     title: "Software Engineer",

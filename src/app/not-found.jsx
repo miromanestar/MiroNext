@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NotFound = () => {
   return (
-    <div className="bg-secondaryBg flex h-full lg:relative">
+    <div className="bg-secondaryBg flex flex-1 lg:relative">
       <div className="flex flex-1 grow flex-col">
         <main className="bg-secondaryBg flex h-full w-full items-center justify-center">
           <div className="my-auto shrink-0 py-16 sm:py-32">

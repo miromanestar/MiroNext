@@ -56,9 +56,15 @@ const Missions = () => (
         <h2 className="text-highlight text-center text-base leading-7 font-semibold">
           Built with React, Tauri and Strapi
         </h2>
-        <p className="mt-2 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <p className="mt-2 mb-2 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
           SAU Missions Dashboard
         </p>
+        <a
+          href="https://saukiosk.manestar.dev"
+          className="text-md hover:text-highlight flex items-center justify-center leading-7 text-gray-400 duration-200"
+        >
+          View Demo
+        </a>
         <p className="mt-6 text-lg leading-8 text-gray-300">
           The SAU Missions Dashboard is a simple website built for a large
           touchscreen kiosk. It allows users to easily see information relating

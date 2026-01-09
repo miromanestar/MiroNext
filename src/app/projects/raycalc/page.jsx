@@ -11,7 +11,7 @@ const RayCalc = () => (
           RayCalc
         </p>
         <a
-          href="https://github.com/miromanestar/AutoAttend"
+          href="https://github.com/miromanestar/raycalc2"
           className="text-md mx-auto mt-2 leading-7 text-gray-400"
         >
           View Source

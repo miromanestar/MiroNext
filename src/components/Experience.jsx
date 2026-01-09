@@ -7,13 +7,13 @@ import {
 const positions = [
   {
     title: "Software Engineer",
-    type: "Current",
-    location: "Chattanooga, TN",
-    company: "Tennessee Valley Authority",
-    start: "2020-01-07",
-    end: "2020-01-07",
-    startFull: "February 2022",
+    type: "Full Time",
+    company: "Schweitzer Engineering Laboratories",
+    start: "2026-01-13",
+    end: "",
+    startFull: "January 2026",
     endFull: "Present",
+    location: "Chattanooga, TN",
   },
   {
     title: "Adjunct Professor",
@@ -27,13 +27,13 @@ const positions = [
   },
   {
     title: "Software Engineer",
-    type: "Freelance",
+    type: "Full Time",
     location: "Chattanooga, TN",
-    company: "Various Clients",
+    company: "Tennessee Valley Authority",
     start: "2020-01-07",
     end: "2020-01-07",
-    startFull: "August 2021",
-    endFull: "Present",
+    startFull: "February 2022",
+    endFull: "January 2026",
   },
 ];
 

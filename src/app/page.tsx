@@ -37,19 +37,16 @@ const schools = [
   {
     institution: "Southern Adventist University",
     degree: "Computer Science",
-    level: "MS & BS",
+    level: "Master of Science",
     website: "https://southern.edu",
-    date: "August 2020 - May 2023",
-    imageUrl:
-      "https://www.thestudentloancalculator.com/wp-content/uploads/2020/08/mzi.gteaeddn-removebg-preview.png",
+    date: "August 2021 - May 2023",
   },
   {
-    institution: "University of North Georgia",
+    institution: "Southern Adventist University",
     degree: "Computer Science",
-    level: "Associate of Science",
-    website: "https://ung.edu",
-    date: "August 2018 - May 2020",
-    imageUrl: "https://i.imgur.com/FANSBxD.png",
+    level: "Bachelor of Science",
+    website: "https://southern.edu",
+    date: "August 2020 - May 2023",
   },
 ];
 

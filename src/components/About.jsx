@@ -14,9 +14,9 @@ const About = () => (
           <h2 className="mb-4 text-4xl font-bold text-white">About Me</h2>
           <p className="mb-4">
             I&apos;m a full-stack software engineer with a passion for creating
-            beautiful, intuitive, and functional web applications. Whether it be
-            a simple landing page or a complex web application, I take each as
-            an opportunity to learn and grow.
+            beautiful, intuitive, and robust applications. Whether it be a
+            simple landing page or a complex application, I take each as an
+            opportunity to learn and grow.
           </p>
           <p>
             I love to challenge myself, and am always working on personal

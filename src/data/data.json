@@ -33,17 +33,6 @@
       "icon": "SquaresPlusIcon"
     },
     {
-      "name": "Youtube Gallery",
-      "href": "/projects/youtube",
-      "source": "https://github.com/miromanestar/Youtube-Gallery",
-      "description": "A simple script which generates an interactive gallery of Youtube videos from a playlist with client-side caching.",
-      "img": "https://i.imgur.com/covKPgf.jpg",
-      "status": "Complete",
-      "category": "Web Widget",
-      "featured": false,
-      "icon": "SquaresPlusIcon"
-    },
-    {
       "name": "Snake in Rust",
       "href": "/projects/snake",
       "description": "A very simple snake game built in Rust and compiled for WASM",
@@ -90,6 +79,19 @@
       "img": "https://i.imgur.com/FUZQvYk.jpg",
       "status": "Complete",
       "category": "Concept"
+    }
+  ],
+  "archived": [
+    {
+      "name": "Youtube Gallery",
+      "href": "/projects/youtube",
+      "source": "https://github.com/miromanestar/Youtube-Gallery",
+      "description": "A simple script which generates an interactive gallery of Youtube videos from a playlist with client-side caching.",
+      "img": "https://i.imgur.com/covKPgf.jpg",
+      "status": "Complete",
+      "category": "Web Widget",
+      "featured": false,
+      "icon": "SquaresPlusIcon"
     }
   ]
 }

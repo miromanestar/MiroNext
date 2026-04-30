@@ -41,7 +41,7 @@ const Snake = () => (
           tabIndex={1}
           autoFocus={true}
           width="800"
-          height="600"
+          height="800"
         />
       </div>
     </div>

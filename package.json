@@ -14,7 +14,7 @@
     "@heroicons/react": "^2.2.0",
     "next": "16.2.6",
     "plotly.js": "^3.5.1",
-    "react": "19.2.5",
+    "react": "19.2.6",
     "react-awesome-reveal": "4.3.1",
     "react-dom": "19.2.5",
     "react-hot-toast": "^2.6.0",
@@ -31,7 +31,7 @@
     "postcss": "^8.5.14",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "tailwindcss": "^4.2.4",
+    "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   }
 }

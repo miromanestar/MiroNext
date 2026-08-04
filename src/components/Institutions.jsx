@@ -17,9 +17,6 @@ const Institutions = ({ institutions }) => {
             <div className="flex w-full items-center justify-between space-x-6 p-6">
               <div className="flex-1 truncate">
                 <div className="flex flex-col gap-4 md:flex-row">
-                  <h3 className="truncate text-lg font-medium text-white">
-                    {s.degree}
-                  </h3>
                   <div className="bg-nordred flex w-fit gap-1 rounded-full p-1 px-2 text-xs leading-5 font-semibold text-white md:pt-1">
                     <AcademicCapIcon
                       className="h-5 w-5 text-gray-200"
@@ -27,6 +24,9 @@ const Institutions = ({ institutions }) => {
                     />
                     {s.level}
                   </div>
+                  <h3 className="truncate text-lg font-medium text-white">
+                    {s.degree}
+                  </h3>
                 </div>
                 <div className="mt-4 flex gap-2 truncate text-sm text-gray-300">
                   <BuildingLibraryIcon

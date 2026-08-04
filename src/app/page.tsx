@@ -36,15 +36,15 @@ const HomePage = () => {
 const schools = [
   {
     institution: "Southern Adventist University",
-    degree: "Computer Science",
-    level: "Master of Science",
+    degree: "M.S. Computer Science",
+    // level: "Master of Science",
     website: "https://southern.edu",
     date: "August 2021 - May 2023",
   },
   {
     institution: "Southern Adventist University",
-    degree: "Computer Science",
-    level: "Bachelor of Science",
+    degree: "B.S. Computer Science",
+    // level: "Bachelor of Science",
     website: "https://southern.edu",
     date: "August 2020 - May 2023",
   },

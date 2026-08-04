@@ -16,16 +16,6 @@ const positions = [
     location: "Chattanooga, TN",
   },
   {
-    title: "Adjunct Professor",
-    type: "Part Time",
-    location: "Collegedale, TN",
-    company: "Southern Adventist University",
-    start: "2024-01-07",
-    end: "2024-05-08",
-    startFull: "January 2024",
-    endFull: "Present",
-  },
-  {
     title: "Software Engineer",
     type: "Full Time",
     location: "Chattanooga, TN",
@@ -34,6 +24,16 @@ const positions = [
     end: "2020-01-07",
     startFull: "February 2022",
     endFull: "January 2026",
+  },
+  {
+    title: "Adjunct Professor",
+    type: "Part Time",
+    location: "Collegedale, TN",
+    company: "Southern Adventist University",
+    start: "2024-01-07",
+    end: "2026-05-08",
+    startFull: "January 2024",
+    endFull: "May 2026",
   },
 ];
 

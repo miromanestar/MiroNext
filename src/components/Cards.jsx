@@ -10,8 +10,8 @@ const Cards = ({ cards, className }) => {
             My Projects
           </h2>
           <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-            {cards.map((p, i) => (
-              <Card key={`fcard-${i}`} data={p} />
+            {cards.map((project) => (
+              <Card key={project.href} data={project} />
             ))}
           </div>
         </div>

@@ -9,9 +9,9 @@ const Institutions = ({ institutions }) => {
   return (
     <div className="w-full px-4 py-8">
       <div className="mx-auto flex max-w-(--breakpoint-xl) flex-wrap justify-center gap-6">
-        {institutions.map((s, i) => (
+        {institutions.map((institution) => (
           <div
-            key={`institution-${i}`}
+            key={institution.degree}
             className="bg-tertiaryBg w-full flex-1 divide-y divide-gray-500 rounded-lg shadow-sm md:w-auto"
           >
             <div className="flex w-full items-center justify-between space-x-6 p-6">
@@ -22,10 +22,10 @@ const Institutions = ({ institutions }) => {
                       className="h-5 w-5 text-gray-200"
                       aria-hidden="true"
                     />
-                    {s.level}
+                    {institution.level}
                   </div>
                   <h3 className="truncate text-lg font-medium text-white">
-                    {s.degree}
+                    {institution.degree}
                   </h3>
                 </div>
                 <div className="mt-4 flex gap-2 truncate text-sm text-gray-300">
@@ -33,15 +33,15 @@ const Institutions = ({ institutions }) => {
                     className="h-5 w-5 text-gray-200"
                     aria-hidden="true"
                   />
-                  {s.institution}
+                  {institution.institution}
                 </div>
-                {s.date && (
+                {institution.date && (
                   <div className="mt-1 flex gap-2 truncate text-sm text-gray-300">
                     <CalendarIcon
                       className="h-5 w-5 text-gray-200"
                       aria-hidden="true"
                     />
-                    {s.date}
+                    {institution.date}
                   </div>
                 )}
               </div>
@@ -51,7 +51,7 @@ const Institutions = ({ institutions }) => {
               <div className="-mt-px flex divide-x divide-gray-600">
                 <div className="flex w-0 flex-1">
                   <a
-                    href={s.website}
+                    href={institution.website}
                     className="text-highlight relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium duration-200 hover:text-gray-200"
                   >
                     <GlobeAltIcon

@@ -11,48 +11,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
-const projects = [
-  {
-    name: "Hawaii and Southern California Geochemistry",
-    description:
-      "A research project comparing the geochemistry of the Hawaiian Islands and Southern California",
-    href: "/projects/hawaii",
-    icon: LightBulbIcon,
-  },
-  {
-    name: "SAU Missions Dashboard",
-    description:
-      "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
-    href: "/projects/missions",
-    icon: GlobeEuropeAfricaIcon,
-  },
-  {
-    name: "AutoAttend",
-    description:
-      "A proof-of-concept application for automating attendance in a classroom setting via facial recognition.",
-    href: "/projects/autoattend",
-    icon: ViewfinderCircleIcon,
-  },
-];
+import { featuredProjects, socialLinks } from "../data/portfolio";
 
-const social = [
-  {
-    url: "https://github.com/miromanestar",
-    img: "/images/github.svg",
-  },
-  {
-    url: "https://twitter.com/ManestarMiro",
-    img: "/images/twitter.svg",
-  },
-  {
-    url: "https://www.linkedin.com/in/miro-manestar/",
-    img: "/images/linkedin.svg",
-  },
-  {
-    url: "mailto:miroimanestar@gmail.com",
-    img: "/images/email.svg",
-  },
-];
+const projectIcons = {
+  research: LightBulbIcon,
+  missions: GlobeEuropeAfricaIcon,
+  attendance: ViewfinderCircleIcon,
+};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -73,23 +38,27 @@ const Links = ({ close }) => (
 const ProjectLinks = ({ close }) => (
   <>
     <div className="bg-secondaryBg relative grid gap-6 px-5 py-6 focus:outline-hidden sm:gap-8 sm:p-8">
-      {projects.map((item) => (
-        <Link
-          key={item.name}
-          onClick={close}
-          href={item.href}
-          className="hover:bg-background -m-3 flex items-start rounded-lg p-3 duration-200"
-        >
-          <item.icon
-            className="text-highlight h-6 w-6 shrink-0"
-            aria-hidden="true"
-          />
-          <div className="ml-4">
-            <p className="text-base font-medium text-gray-100">{item.name}</p>
-            <p className="mt-1 text-sm text-white">{item.description}</p>
-          </div>
-        </Link>
-      ))}
+      {featuredProjects.map((item) => {
+        const Icon = projectIcons[item.navigationIcon];
+
+        return (
+          <Link
+            key={item.name}
+            onClick={close}
+            href={item.href}
+            className="hover:bg-background -m-3 flex items-start rounded-lg p-3 duration-200"
+          >
+            <Icon
+              className="text-highlight h-6 w-6 shrink-0"
+              aria-hidden="true"
+            />
+            <div className="ml-4">
+              <p className="text-base font-medium text-gray-100">{item.name}</p>
+              <p className="mt-1 text-sm text-white">{item.description}</p>
+            </div>
+          </Link>
+        );
+      })}
     </div>
     <div className="bg-tertiaryBg rounded-b-lg px-5 py-5 focus:outline-hidden sm:px-8">
       <div className="text-sm">
@@ -108,13 +77,17 @@ const ProjectLinks = ({ close }) => (
 
 const SocialLinks = () => (
   <div className="flex justify-center gap-4">
-    {social.map((item) => (
+    {socialLinks.map((item) => (
       <Link
-        key={item.url}
-        href={item.url}
+        key={item.name}
+        href={item.href}
         className="text-gray-400 duration-200 hover:scale-105 hover:text-white"
       >
-        <img className="white-filter h-[3em]" src={item.img} alt={item.url} />
+        <img
+          className="white-filter h-[3em]"
+          src={item.image}
+          alt={item.name}
+        />
       </Link>
     ))}
   </div>
@@ -219,7 +192,7 @@ const Header = () => {
           >
             <Popover.Panel
               focus
-              className="absolute inset-x-0 top-[80px] origin-top-right transform p-2 transition md:hidden"
+              className="absolute inset-x-0 top-20 origin-top-right transform p-2 transition md:hidden"
             >
               <div className="bg-secondaryBg ring-opacity-5 divide-y divide-gray-500 rounded-lg shadow-lg ring-1 ring-black">
                 <div className="space-y-6 px-5 py-6">

@@ -2,16 +2,16 @@ import Template from "../../components/Template";
 import Card from "../../components/Card";
 import DelayedTransition from "../../components/DelayedTransition";
 
-import data from "../../data/data.json";
+import { projects } from "../../data/portfolio";
 
 const Projects = () => {
   return (
     <Template title="My Projects">
       <div className="my-12 grid gap-8 lg:grid-cols-3">
-        {data.projects.map((p, i) => (
+        {projects.map((project, index) => (
           <DelayedTransition
-            key={`fcard-${i}`}
-            delay={i * 100}
+            key={project.href}
+            delay={index * 100}
             enter={`transition duration-400`}
             enterFrom="opacity-0 scale-50"
             enterTo="opacity-100 scale-100"
@@ -19,7 +19,7 @@ const Projects = () => {
             leaveFrom="opacity-100 rotate-0 scale-100 "
             leaveTo="opacity-0 scale-95 "
           >
-            <Card data={p} />
+            <Card data={project} />
           </DelayedTransition>
         ))}
       </div>

@@ -8,7 +8,7 @@ const Card = ({ data }) => (
     <div className="shrink-0">
       <img
         className="h-48 w-full object-cover duration-200 group-hover:scale-105"
-        src={data.img}
+        src={data.image}
         alt=""
       />
     </div>

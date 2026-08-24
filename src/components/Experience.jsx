@@ -4,40 +4,7 @@ import {
   BuildingOffice2Icon,
 } from "@heroicons/react/20/solid";
 
-const positions = [
-  {
-    title: "Software Engineer",
-    type: "Full Time",
-    company: "Schweitzer Engineering Laboratories",
-    start: "2026-01-13",
-    end: "",
-    startFull: "January 2026",
-    endFull: "Present",
-    location: "Chattanooga, TN",
-  },
-  {
-    title: "Software Engineer",
-    type: "Full Time",
-    location: "Chattanooga, TN",
-    company: "Tennessee Valley Authority",
-    start: "2020-01-07",
-    end: "2020-01-07",
-    startFull: "February 2022",
-    endFull: "January 2026",
-  },
-  {
-    title: "Adjunct Professor",
-    type: "Part Time",
-    location: "Collegedale, TN",
-    company: "Southern Adventist University",
-    start: "2024-01-07",
-    end: "2026-05-08",
-    startFull: "January 2024",
-    endFull: "May 2026",
-  },
-];
-
-const Experience = () => {
+const Experience = ({ positions }) => {
   return (
     <div className="w-full px-4 pt-8">
       <h2 className="pb-8 text-center text-3xl font-bold text-white sm:text-4xl">
@@ -83,10 +50,10 @@ const Experience = () => {
                       />
                       <p>
                         <time dateTime={position.start}>
-                          {position.startFull}
+                          {position.startLabel}
                         </time>{" "}
                         &ndash;{" "}
-                        <time dateTime={position.end}>{position.endFull}</time>
+                        <time dateTime={position.end}>{position.endLabel}</time>
                       </p>
                     </div>
                   </div>

@@ -1,28 +1,45 @@
 import Link from "next/link";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
+
 import Card from "./Card";
 
-const Cards = ({ cards, className }) => {
+const Cards = ({ cards }) => {
   return (
-    <div className={className}>
-      <div className="relative z-10 flex flex-col items-center justify-center gap-8 bg-transparent px-6 pt-16 pb-10 lg:px-8 lg:pt-24">
-        <div className="relative mx-auto max-w-7xl">
-          <h2 className="mx-auto w-fit rounded-lg p-3 text-center text-3xl font-bold text-white drop-shadow-md sm:text-4xl">
-            My Projects
+    <section
+      id="selected-work"
+      data-gradient-palette="projects"
+      className="relative z-10 scroll-mt-24 px-6 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div>
+          <p className="selected-work-eyebrow text-sm font-semibold tracking-[0.2em] uppercase">
+            Selected work
+          </p>
+          <h2 className="selected-work-title mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+            Projects with purpose
           </h2>
-          <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-            {cards.map((project) => (
-              <Card key={project.href} data={project} />
-            ))}
-          </div>
         </div>
-        <Link
-          href="/projects"
-          className="bg-highlight w-fit cursor-pointer rounded-lg p-4 font-medium text-white duration-200 hover:scale-105 hover:brightness-110"
-        >
-          View all my projects
-        </Link>
+
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {cards.map((project) => (
+            <Card key={project.href} data={project} />
+          ))}
+        </div>
+
+        <div className="mt-7 flex justify-center sm:mt-8">
+          <Link
+            href="/projects"
+            className="group hover:border-highlight/60 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-medium text-white transition hover:bg-white/5"
+          >
+            Explore all projects
+            <ArrowRightIcon
+              className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </Link>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

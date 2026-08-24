@@ -37,7 +37,7 @@ const PCA3D = ({ data, title }) => {
   };
 
   return (
-    <div className="h-full w-full overflow-hidden rounded-lg ring-2 ring-white/10">
+    <div className="bg-background/35 h-full min-h-104 w-full min-w-0 overflow-hidden rounded-2xl border border-white/15 shadow-sm backdrop-blur-sm sm:min-h-128">
       <Plot
         data={[
           {
@@ -98,6 +98,7 @@ const PCA3D = ({ data, title }) => {
           },
           margin: { b: 0, t: 0, l: 0, r: 26 },
           scene: {
+            bgcolor: "rgba(0, 0, 0, 0)",
             xaxis: {
               title: "Dim1",
               gridcolor: "#6b7280",
@@ -119,15 +120,15 @@ const PCA3D = ({ data, title }) => {
           legend: {
             x: 0,
             y: 0,
-            bgcolor: "#434C5E",
-            bordercolor: "#3B4252",
+            bgcolor: "rgba(46, 52, 64, 0.35)",
+            bordercolor: "rgba(255, 255, 255, 0.1)",
             itemsizing: "constant",
             orientation: "v",
           },
-          plot_bgcolor: "#2E3440",
-          paper_bgcolor: "#2E3440",
+          plot_bgcolor: "rgba(0, 0, 0, 0)",
+          paper_bgcolor: "rgba(0, 0, 0, 0)",
           font: {
-            color: "white",
+            color: "#d1d5db",
           },
         }}
         useResizeHandler={true}

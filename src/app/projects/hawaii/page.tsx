@@ -15,32 +15,34 @@ const HawaiiPRB = () => (
     title="Hawaii vs PRB Geochemical Analysis"
     names={["", "Hawaii vs PRB"]}
     rightSidebar={
-      <div className="sticky top-3 mx-auto w-fit min-[1660px]:mx-0 min-[1660px]:max-w-sm">
+      <div className="mx-auto w-full max-w-sm min-[2200px]:sticky min-[2200px]:top-28 min-[2200px]:mx-0">
         <PaperDetails data={details} />
       </div>
     }
   >
     {/* <iframe src='/plots/hawaii_pca.html' className='w-full h-[1200px]' title='Hawaii vs PRB Geochemical Analysis'></iframe> */}
-    <div className="mx-auto max-w-7xl lg:px-8">
+    <div className="mx-auto max-w-5xl">
       <div className="mx-auto">
-        <h2 className="text-highlight text-center text-base leading-7 font-semibold">
+        <p className="text-highlight text-center text-sm leading-6 font-semibold tracking-wide uppercase sm:text-base sm:leading-7">
           Data Science
-        </h2>
-        <p className="mt-2 mb-2 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        </p>
+        <h2 className="from-highlight bg-linear-to-r via-white to-white bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-4xl">
           Comparing Igneous Geochemical Data from Hawaii and Southern California
           via Machine Learning
-        </p>
+        </h2>
         <a
           href="https://github.com/miromanestar/LomaGeology"
-          className="text-md hover:text-highlight flex items-center justify-center leading-7 text-gray-400 duration-200"
+          className="hover:text-highlight mt-2 flex items-center justify-center text-sm leading-6 text-gray-400 duration-200 sm:text-base sm:leading-7"
         >
           <img
             src="/images/github.svg"
-            className="white-filter mr-2 h-[20px]"
+            alt=""
+            aria-hidden="true"
+            className="white-filter mr-2 h-5"
           />
           View Source
         </a>
-        <p className="mt-4 text-lg leading-8 text-gray-300">
+        <p className="mt-4 text-base leading-7 text-gray-300 sm:mt-6 sm:text-lg sm:leading-8">
           Bi-plots are commonly used in geochemical analyses. However, their use
           can become cumbersome in the case of multi-variate analyses.
           Therefore, this paper explores the application of unsupervised machine
@@ -60,16 +62,16 @@ const HawaiiPRB = () => (
       </div>
     </div>
 
-    <p className="mt-8 mb-6 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <h2 className="mt-10 mb-4 text-center text-2xl font-bold tracking-tight text-white sm:mt-12 sm:mb-5 sm:text-3xl">
       Theoretical Framework
-    </p>
+    </h2>
     <Technologies data={tech} />
 
-    <p className="mt-8 mb-6 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <h2 className="mt-10 mb-4 text-center text-2xl font-bold tracking-tight text-white sm:mt-12 sm:mb-5 sm:text-3xl">
       Hawaii and the Pensinular Ranges Batholith (PRB)
-    </p>
+    </h2>
 
-    <p className="mt-8 mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-6 max-w-5xl text-base leading-7 text-gray-300 sm:mt-8 sm:text-lg sm:leading-8">
       Hawaii and the PRB in Southern California share some similar geological
       attributes. Both geological locations are the result of plate tectonic
       forces and motion and are composed of rocks with a significant silica
@@ -80,7 +82,7 @@ const HawaiiPRB = () => (
 
     <Table table={differences} boldFirst={false} />
 
-    <p className="mt-8 mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-6 max-w-5xl text-base leading-7 text-gray-300 sm:mt-8 sm:text-lg sm:leading-8">
       However, there are also notable differences between Hawaii and the PRB.
       The above table provides an overview on some of the important differences
       between Hawaii and the PRB in Southern California. The PRB was formed via
@@ -100,11 +102,11 @@ const HawaiiPRB = () => (
       data is from volcanoes on the Big Island at the end of the chain.
     </p>
 
-    <p className="mt-8 mb-4 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <h2 className="mt-10 mb-4 text-center text-2xl font-bold tracking-tight text-white sm:mt-12 sm:mb-5 sm:text-3xl">
       Results
-    </p>
+    </h2>
 
-    <p className="mt-8 mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-6 max-w-5xl text-base leading-7 text-gray-300 sm:mt-8 sm:text-lg sm:leading-8">
       The following figures show the results of the PCA and K-Means analysis for
       Hawaii and the PRB. Approximately 20% of Hawaii samples and 50% of PRB
       samples were filtered out before analysis due to missing features.
@@ -118,76 +120,76 @@ const HawaiiPRB = () => (
       the application of the elbow method.
     </p>
 
-    <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+    <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2">
       <div>
         <img
-          className="h-auto max-w-full rounded-lg"
+          className="h-auto max-w-full rounded-xl border border-white/10 sm:rounded-2xl"
           src="https://i.imgur.com/UZuC93V.png"
-          alt=""
+          alt="PCA and K-Means analysis result plot for Hawaii and the PRB, figure 1"
         />
       </div>
       <div>
         <img
-          className="h-auto max-w-full rounded-lg"
+          className="h-auto max-w-full rounded-xl border border-white/10 sm:rounded-2xl"
           src="https://i.imgur.com/RR0u2Q4.png"
-          alt=""
+          alt="PCA and K-Means analysis result plot for Hawaii and the PRB, figure 2"
         />
       </div>
       <div>
         <img
-          className="h-auto max-w-full rounded-lg"
+          className="h-auto max-w-full rounded-xl border border-white/10 sm:rounded-2xl"
           src="https://i.imgur.com/U7GssVr.png"
-          alt=""
+          alt="PCA and K-Means analysis result plot for Hawaii and the PRB, figure 3"
         />
       </div>
       <div>
         <img
-          className="h-auto max-w-full rounded-lg"
+          className="h-auto max-w-full rounded-xl border border-white/10 sm:rounded-2xl"
           src="https://i.imgur.com/FzASaYD.png"
-          alt=""
+          alt="PCA and K-Means analysis result plot for Hawaii and the PRB, figure 4"
         />
       </div>
       <div>
         <img
-          className="h-auto max-w-full rounded-lg"
+          className="h-auto max-w-full rounded-xl border border-white/10 sm:rounded-2xl"
           src="https://i.imgur.com/WbWRMru.png"
-          alt=""
+          alt="PCA and K-Means analysis result plot for Hawaii and the PRB, figure 5"
         />
       </div>
       <div>
         <img
-          className="h-auto max-w-full rounded-lg"
+          className="h-auto max-w-full rounded-xl border border-white/10 sm:rounded-2xl"
           src="https://i.imgur.com/lYwHaYQ.png"
-          alt=""
+          alt="PCA and K-Means analysis result plot for Hawaii and the PRB, figure 6"
         />
       </div>
     </div>
 
-    <p className="mt-8 mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-6 max-w-5xl text-base leading-7 text-gray-300 sm:mt-8 sm:text-lg sm:leading-8">
       Because three dimensions were selected, three-dimensional plots were
       generated. A full window plot for Hawaii can be accessed{" "}
       <Link
         href="/plots/hawaii"
-        className="text-highlight hover:text-highlight2 duration-100"
+        className="text-highlight decoration-highlight/50 hover:text-highlight2 hover:decoration-highlight2 underline decoration-1 underline-offset-4 duration-100"
       >
         here
       </Link>{" "}
       and the plot for the PRB can be accessed{" "}
       <Link
         href="/plots/prb"
-        className="text-highlight hover:text-highlight2 duration-100"
+        className="text-highlight decoration-highlight/50 hover:text-highlight2 hover:decoration-highlight2 underline decoration-1 underline-offset-4 duration-100"
       >
         here
       </Link>
       .
     </p>
 
-    <div className="flex flex-col gap-3 md:flex-row">
+    <div className="mt-6 flex flex-col gap-2 md:flex-row">
       <PCA3D data={hawaii} title="Hawaii 3D PCA Bi-Plot" />
       <PCA3D data={prb} title="PRB 3D PCA Bi-Plot" />
     </div>
 
-    <p className="mt-8 mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-6 max-w-5xl text-base leading-7 text-gray-300 sm:mt-8 sm:text-lg sm:leading-8">
       The below tables show the average value of a given feature in each of the
       three clusters. It is important to note that the averages were calculated
       using the non-normalized values from the data. This was done to ensure
@@ -196,12 +198,12 @@ const HawaiiPRB = () => (
       resulted in higher quality clusters.
     </p>
 
-    <div className="mt-8 flex flex-wrap justify-center gap-3">
+    <div className="mt-6 flex flex-wrap justify-center gap-2">
       <Table table={hawaiik3} boldFirst={true} />
       <Table table={prbk3} boldFirst={true} />
     </div>
 
-    <p className="mt-8 mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-6 max-w-5xl text-base leading-7 text-gray-300 sm:mt-8 sm:text-lg sm:leading-8">
       It is useful to note that the the clusters were reordered to match the
       order of the igneous sequences in Hawaii and the PRB. Thus, cluster one
       for Hawaii can be found to relate to basalt, cluster two to andesite, and
@@ -210,11 +212,11 @@ const HawaiiPRB = () => (
       deliberately to make the interpretation of the data more intuitive.
     </p>
 
-    <p className="mt-8 mb-4 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <h2 className="mt-10 mb-4 text-center text-2xl font-bold tracking-tight text-white sm:mt-12 sm:mb-5 sm:text-3xl">
       Conclusions
-    </p>
+    </h2>
 
-    <p className="mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto max-w-5xl text-base leading-7 text-gray-300 sm:text-lg sm:leading-8">
       The geochemical interpretation of these plots was provided by one of the
       co-authors (BLC). Our analysis of rock geochemistry from Hawaii and the
       PRB using PCA and K-Means provided valuable insights. For both regions,
@@ -225,7 +227,7 @@ const HawaiiPRB = () => (
       primitive magma has progressed.
     </p>
 
-    <p className="mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-4 max-w-5xl text-base leading-7 text-gray-300 sm:text-lg sm:leading-8">
       For Hawaii, basalt was related to cluster one, andesite to cluster two,
       and dacite to cluster three. In the PRB, gabbro was related to cluster
       one, tonalite to cluster two, and granite to cluster three. By taking into
@@ -233,7 +235,7 @@ const HawaiiPRB = () => (
       interpretation is possible:
     </p>
 
-    <ul className="mb-4 ml-8 list-disc text-gray-300 sm:text-lg">
+    <ul className="mx-auto mt-4 max-w-5xl list-disc space-y-3 pl-5 text-base leading-7 text-gray-300 marker:text-gray-500 sm:text-lg sm:leading-8">
       <li>
         In Hawaii, the volcanic sequence ranges from basalt to andesite to
         dacite. Dimension one values indicate the degree of differentiation,
@@ -262,7 +264,7 @@ const HawaiiPRB = () => (
       </li>
     </ul>
 
-    <p className="mb-4 text-gray-300 sm:text-lg">
+    <p className="mx-auto mt-4 max-w-5xl text-base leading-7 text-gray-300 sm:text-lg sm:leading-8">
       Future work should include a deeper analysis of K-Means clustering for
       samples from Hawaii and the PRB (e.g., exploration of a larger number of
       clusters with additional geochemical elements). In addition, the log-ratio

@@ -6,7 +6,6 @@ export interface Project {
   source?: string;
   description: string;
   image: string;
-  status: string;
   category: string;
   featured?: boolean;
   navigationIcon?: ProjectIcon;
@@ -16,19 +15,25 @@ export interface Experience {
   title: string;
   type: string;
   company: string;
+  logo: string;
   location: string;
-  start: string;
-  end?: string;
+  description: string;
+  skills: string[];
   startLabel: string;
   endLabel: string;
 }
 
-export interface Institution {
+export interface Education {
   institution: string;
-  degree: string;
-  level: string;
+  logo: string;
+  location: string;
   website: string;
-  date: string;
+  graduationYear: string;
+  degrees: Array<{
+    field: string;
+    level: string;
+    date: string;
+  }>;
 }
 
 export interface SocialLink {
@@ -42,9 +47,31 @@ export const profile = {
   siteTitle: "Miro's Portfolio",
   description:
     "Hello, and welcome to my portfolio! I'm a full-stack software engineer with a passion for creating beautiful, intuitive, and functional web applications.",
+  hero: {
+    eyebrow: "Software Engineer",
+    statement: {
+      lead: "Transforming",
+      body: "lines of code into works of art",
+      closing: "one keystroke at a time.",
+    },
+  },
   about: [
-    "I'm a full-stack software engineer with a passion for creating beautiful, intuitive, and robust applications. Whether it be a simple landing page or a complex application, I take each as an opportunity to learn and grow.",
-    "I love to challenge myself, and am always working on personal projects to hone my skills.",
+    "I'm a software engineer who enjoys turning complex technical problems into clear, dependable software. I care about thoughtful interfaces, practical architecture, and building tools that feel intuitive without hiding the complexity behind them.",
+    "My background spans full-stack applications visualization, and teaching. I'm drawn to work that keeps me learning and makes difficult ideas easier for others to understand.",
+  ],
+  quickFacts: [
+    {
+      label: "Current role",
+      value: "Software Engineer at SEL",
+    },
+    {
+      label: "Based in",
+      value: "Chattanooga, Tennessee",
+    },
+    {
+      label: "Focus",
+      value: "Full-stack with UI specialization",
+    },
   ],
   images: {
     portrait: {
@@ -52,12 +79,6 @@ export const profile = {
       alt: "Miro Manestar",
       width: 708,
       height: 957,
-    },
-    technology: {
-      src: "https://i.imgur.com/UyGBwka.jpeg",
-      alt: "Tech image",
-      width: 760,
-      height: 506,
     },
   },
 } as const;
@@ -70,7 +91,6 @@ export const projects: Project[] = [
     description:
       "A research project comparing the geochemistry of the Hawaiian Islands and Southern California. Done in collaboration with the Geoscience Research Institute and Southern Adventist University.",
     image: "https://i.imgur.com/dcXTVGm.jpg",
-    status: "Complete",
     category: "Research",
     featured: true,
     navigationIcon: "research",
@@ -81,7 +101,6 @@ export const projects: Project[] = [
     description:
       "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
     image: "https://i.imgur.com/MPHVBNT.jpg",
-    status: "Complete",
     category: "Full Stack Application",
     featured: true,
     navigationIcon: "missions",
@@ -93,7 +112,6 @@ export const projects: Project[] = [
     description:
       "A proof-of-concept application leveraging open source face vectorization models and vector databases to perform automated classroom attendance tracking via facial recognition.",
     image: "https://i.imgur.com/SeLhb3b.jpg",
-    status: "Complete",
     category: "Full Stack Application",
     featured: true,
     navigationIcon: "attendance",
@@ -103,7 +121,6 @@ export const projects: Project[] = [
     href: "/projects/snake",
     description: "A very simple snake game built in Rust and compiled for WASM",
     image: "https://i.imgur.com/yXQByXt.jpeg",
-    status: "Complete",
     category: "Game",
   },
   {
@@ -112,7 +129,6 @@ export const projects: Project[] = [
     description:
       "A simple visualizer for constraint based programming. Done in Javascript!",
     image: "https://i.imgur.com/lMiMbdF.jpg",
-    status: "Complete",
     category: "Visualizer",
   },
   {
@@ -121,7 +137,6 @@ export const projects: Project[] = [
     description:
       "A memory segmentation and virtual address translation visualizer.",
     image: "https://i.imgur.com/rT88WGi.jpg",
-    status: "Complete",
     category: "Visualizer",
   },
   {
@@ -130,7 +145,6 @@ export const projects: Project[] = [
     description:
       "A cross-platform radiation dosimetry app build for emergency situations.",
     image: "https://i.imgur.com/LpWvdv4.jpg",
-    status: "Complete",
     category: "Mobile App",
   },
   {
@@ -139,7 +153,6 @@ export const projects: Project[] = [
     description:
       "A simple maze generator built using the JavaScript canvas. (And a C++ version too)",
     image: "https://i.imgur.com/q12X86T.jpg",
-    status: "Complete",
     category: "Concept",
   },
   {
@@ -148,21 +161,7 @@ export const projects: Project[] = [
     description:
       "A word search generator built using the JavaScript. Comes with a solver!",
     image: "https://i.imgur.com/FUZQvYk.jpg",
-    status: "Complete",
     category: "Concept",
-  },
-];
-
-export const archivedProjects: Project[] = [
-  {
-    name: "Youtube Gallery",
-    href: "/projects/youtube",
-    source: "https://github.com/miromanestar/Youtube-Gallery",
-    description:
-      "A simple script which generates an interactive gallery of Youtube videos from a playlist with client-side caching.",
-    image: "https://i.imgur.com/covKPgf.jpg",
-    status: "Complete",
-    category: "Web Widget",
   },
 ];
 
@@ -173,8 +172,20 @@ export const experience: Experience[] = [
     title: "Software Engineer",
     type: "Full Time",
     company: "Schweitzer Engineering Laboratories",
+    logo: "/images/sel_logo.jpg",
     location: "Chattanooga, TN",
-    start: "2026-01-13",
+    description:
+      "Building full-stack software that supports real-time control and management of power systems.",
+    skills: [
+      "Dart",
+      "JavaScript",
+      "C#",
+      ".NET",
+      "WPF",
+      "Jenkins",
+      "Cypress",
+      "Kubernetes",
+    ],
     startLabel: "January 2026",
     endLabel: "Present",
   },
@@ -182,9 +193,11 @@ export const experience: Experience[] = [
     title: "Software Engineer",
     type: "Full Time",
     company: "Tennessee Valley Authority",
+    logo: "/images/tva_logo.jpg",
     location: "Chattanooga, TN",
-    start: "2020-01-07",
-    end: "2020-01-07",
+    description:
+      "Developed and supported software for operational data and engineering workflows using C#, .NET, SQL, and AVEVA PI.",
+    skills: ["C#", ".NET", "SQL", "Aveva PI"],
     startLabel: "February 2022",
     endLabel: "January 2026",
   },
@@ -192,30 +205,35 @@ export const experience: Experience[] = [
     title: "Adjunct Professor",
     type: "Part Time",
     company: "Southern Adventist University",
+    logo: "/images/sau_logo.jpg",
     location: "Collegedale, TN",
-    start: "2024-01-07",
-    end: "2026-05-08",
+    description:
+      "Taught a university course in Linux and Unix Systems Administration.",
+    skills: ["Linux", "System Administration", "Teaching"],
     startLabel: "January 2024",
     endLabel: "May 2026",
   },
 ];
 
-export const institutions: Institution[] = [
-  {
-    institution: "Southern Adventist University",
-    degree: "M.S. Computer Science",
-    level: "Master of Science",
-    website: "https://southern.edu",
-    date: "August 2021 - May 2023",
-  },
-  {
-    institution: "Southern Adventist University",
-    degree: "B.S. Computer Science",
-    level: "Bachelor of Science",
-    website: "https://southern.edu",
-    date: "August 2020 - May 2023",
-  },
-];
+export const education: Education = {
+  institution: "Southern Adventist University",
+  logo: "/images/sau_logo.jpg",
+  location: "Collegedale, Tennessee",
+  website: "https://southern.edu",
+  graduationYear: "2023",
+  degrees: [
+    {
+      field: "Computer Science",
+      level: "Master of Science",
+      date: "August 2021 - May 2023",
+    },
+    {
+      field: "Computer Science",
+      level: "Bachelor of Science",
+      date: "August 2020 - May 2023",
+    },
+  ],
+};
 
 export const socialLinks: SocialLink[] = [
   {

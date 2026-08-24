@@ -1,26 +1,20 @@
 import Template from "../../components/Template";
 import Card from "../../components/Card";
-import DelayedTransition from "../../components/DelayedTransition";
 
 import { projects } from "../../data/portfolio";
 
 const Projects = () => {
   return (
     <Template title="My Projects">
-      <div className="my-12 grid gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4 sm:gap-6">
         {projects.map((project, index) => (
-          <DelayedTransition
+          <div
             key={project.href}
-            delay={index * 100}
-            enter={`transition duration-400`}
-            enterFrom="opacity-0 scale-50"
-            enterTo="opacity-100 scale-100"
-            leave="duration-200 transition ease-in-out"
-            leaveFrom="opacity-100 rotate-0 scale-100 "
-            leaveTo="opacity-0 scale-95 "
+            className="project-card-reveal"
+            style={{ animationDelay: `${index * 65}ms` }}
           >
             <Card data={project} />
-          </DelayedTransition>
+          </div>
         ))}
       </div>
     </Template>

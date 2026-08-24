@@ -47,7 +47,6 @@ const YTGallery = class {
     }
 
     //Optional parameters
-    this.numColumns = opts.numColumns || 3;
     this.maxResults = opts.maxResults || 18;
     this.searchEnabled =
       opts.searchEnabled === undefined ? true : opts.searchEnabled;
@@ -87,8 +86,6 @@ const YTGallery = class {
 
       this.hide(elem);
     }
-
-    window.addEventListener("resize", (e) => this.styleColumns());
 
     this.insert("div", "gallery");
     this.insert("div", "loader");
@@ -296,7 +293,6 @@ const YTGallery = class {
     if (this.searchEnabled) this.show(this.elems.search);
 
     this.styleButtons();
-    this.styleColumns();
     this.okayToPaginate = true;
 
     const distance = window.scrollY - this.elems.container.offsetTop;
@@ -401,23 +397,6 @@ const YTGallery = class {
     this.elems.infoTop.innerHTML = pageText;
     this.elems.infoBottom.innerHTML = pageText;
     this.show(this.elems.refresh);
-  }
-
-  styleColumns() {
-    const width = window.innerWidth;
-
-    if (this.numColumns === 4 && width >= 1410) this.setWidth("23%");
-    else if (this.numColumns === 3 || width >= 1050) this.setWidth("31%");
-
-    if (this.numColumns === 2 || width < 1050) this.setWidth("48%");
-    if (this.numColumns === 1 || width <= 768) this.setWidth("100%");
-  }
-
-  //Set the width of all video items
-  setWidth(width) {
-    if (!this.elems.gallery) return;
-
-    for (let child of this.elems.gallery.children) child.style.width = width;
   }
 
   hide(el) {

@@ -5,11 +5,6 @@ import { usePathname } from "next/navigation";
 
 import { HomeIcon } from "@heroicons/react/20/solid";
 
-const pages = [
-  { name: "Projects", href: "#", current: false },
-  { name: "Project Nero", href: "#", current: true },
-];
-
 const Breadcrumbs = ({ names = [] }) => {
   const path = usePathname();
 
@@ -25,15 +20,24 @@ const Breadcrumbs = ({ names = [] }) => {
   const routes = calcPath();
 
   return (
-    <nav className="mx-auto mt-10 flex max-w-7xl px-4" aria-label="Breadcrumb">
-      <ol role="list" className="flex items-center space-x-4">
+    <nav
+      className="mt-4 overflow-x-auto px-4 sm:mt-6 sm:px-6 lg:px-8"
+      aria-label="Breadcrumb"
+    >
+      <ol
+        role="list"
+        className="mx-auto flex w-full max-w-7xl items-center gap-2 whitespace-nowrap sm:gap-4"
+      >
         <li>
           <div>
             <Link
               href="/"
               className="hover:text-highlight text-gray-400 duration-100"
             >
-              <HomeIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+              <HomeIcon
+                className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
+                aria-hidden="true"
+              />
               <span className="sr-only">Home</span>
             </Link>
           </div>
@@ -42,7 +46,7 @@ const Breadcrumbs = ({ names = [] }) => {
           <li key={r.name}>
             <div className="flex items-center">
               <svg
-                className="h-5 w-5 shrink-0 text-gray-500"
+                className="h-4 w-4 shrink-0 text-gray-500 sm:h-5 sm:w-5"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -52,7 +56,7 @@ const Breadcrumbs = ({ names = [] }) => {
               </svg>
               <Link
                 href={r.href}
-                className="hover:text-highlight ml-4 text-sm font-medium text-gray-400 duration-100"
+                className="hover:text-highlight ml-2 text-xs font-medium text-gray-300 duration-100 sm:ml-4 sm:text-sm"
               >
                 {r.name}
               </Link>

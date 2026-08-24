@@ -6,6 +6,14 @@ import toast, { Toaster } from "react-hot-toast";
 import Template from "../../../components/Template";
 import DelayedTransition from "../../../components/DelayedTransition";
 
+const toastStyle = {
+  background: "rgba(46, 52, 64, 0.88)",
+  color: "#eceff4",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  borderRadius: "0.75rem",
+  backdropFilter: "blur(12px)",
+};
+
 const Wordsearch = () => {
   const [searchR, setSearchR] = useState(20);
   const [searchC, setSearchC] = useState(20);
@@ -26,10 +34,7 @@ const Wordsearch = () => {
     list = list || wordList;
     if (list[0] === "") {
       toast.error("Please enter some words separated by commas", {
-        style: {
-          background: "#434C5E",
-          color: "#FFF",
-        },
+        style: toastStyle,
       });
       return;
     }
@@ -66,103 +71,128 @@ const Wordsearch = () => {
 
   return (
     <Template title="Wordsearch">
-      <div className="flex w-full flex-col items-center gap-8 text-center text-white">
+      <div className="bg-background/35 relative w-full rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_top_left,rgba(136,192,208,0.14),transparent_50%),radial-gradient(circle_at_bottom_right,rgba(129,161,193,0.12),transparent_55%)] p-3 text-white shadow-lg backdrop-blur-md sm:p-5">
+        <label className="block text-left text-xs font-semibold tracking-wide text-white/70 uppercase">
+          Words
+        </label>
         <input
           type="text"
-          className="bg-tertiaryBg border-secondaryBg focus:bg-secondaryBg focus:border-highlight w-full appearance-none rounded-lg border-2 px-4 py-2 leading-tight text-white focus:outline-hidden"
+          className="bg-background/50 focus:border-highlight/70 mt-1.5 w-full appearance-none rounded-xl border border-white/15 px-3 py-2 text-sm leading-tight text-white shadow-inner backdrop-blur-sm transition placeholder:text-white/40 focus:bg-white/5 focus:outline-none sm:px-4"
           placeholder="Enter words seperated by commas"
           value={wordList.join(", ")}
           onChange={(e) => setWordList(e.target.value.split(", "))}
         />
-        <div className="flex w-full items-center justify-center gap-8">
-          <div className="flex-1">
-            <label>Rows</label>
-            <div className="flex gap-2">
+
+        <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:gap-6">
+          <div className="min-w-0 flex-1 text-left">
+            <label className="text-xs font-semibold tracking-wide text-white/70 uppercase">
+              Rows
+            </label>
+            <div className="mt-1.5 flex items-center gap-3">
               <input
-                className="w-full"
+                className="accent-highlight h-2 w-full cursor-pointer"
                 type="range"
                 min="4"
                 max="35"
                 value={searchR}
                 onChange={(e) => setSearchR(e.target.value)}
               />
-              <output>{searchR}</output>
+              <output className="bg-background/50 min-w-9 rounded-xl border border-white/10 px-2 py-1 text-center text-sm font-semibold tabular-nums backdrop-blur-sm">
+                {searchR}
+              </output>
             </div>
           </div>
 
-          <div className="flex-1">
-            <label>Columns</label>
-            <div className="flex flex-1 gap-2">
+          <div className="min-w-0 flex-1 text-left">
+            <label className="text-xs font-semibold tracking-wide text-white/70 uppercase">
+              Columns
+            </label>
+            <div className="mt-1.5 flex items-center gap-3">
               <input
-                className="w-full"
+                className="accent-highlight h-2 w-full cursor-pointer"
                 type="range"
                 min="4"
                 max="35"
                 value={searchC}
                 onChange={(e) => setSearchC(e.target.value)}
               />
-              <output>{searchC}</output>
+              <output className="bg-background/50 min-w-9 rounded-xl border border-white/10 px-2 py-1 text-center text-sm font-semibold tabular-nums backdrop-blur-sm">
+                {searchC}
+              </output>
             </div>
           </div>
         </div>
+
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:mx-auto sm:w-fit sm:grid-cols-3">
+          <button
+            type="button"
+            className="bg-highlight text-background border-highlight/80 col-span-2 inline-flex cursor-pointer items-center justify-center rounded-xl border px-4 py-2 text-sm font-semibold shadow-sm transition duration-200 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 sm:col-span-1"
+            onClick={() => createPuzzle()}
+          >
+            Generate
+          </button>
+          <button
+            type="button"
+            className="bg-background/50 hover:border-highlight/50 inline-flex cursor-pointer items-center justify-center rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
+            onClick={resetPuzzle}
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            className="bg-background/50 hover:border-highlight/50 inline-flex cursor-pointer items-center justify-center rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
+            onClick={() => setSolButton(!solButton)}
+          >
+            {solButton ? "Hide Solution" : "Show Solution"}
+          </button>
+        </div>
       </div>
 
-      <div className="my-8 flex justify-center rounded-md">
-        <button
-          type="button"
-          className="border-highlight2 bg-highlight relative inline-flex w-fit cursor-pointer items-center rounded-l-md border p-4 px-4 py-2 text-sm font-medium text-white duration-200 hover:brightness-110"
-          onClick={() => createPuzzle()}
+      <div className="bg-background/35 mt-4 overflow-hidden rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_top,rgba(136,192,208,0.1),transparent_55%)] p-2 shadow-xl backdrop-blur-md sm:mt-6 sm:p-4">
+        <div
+          className="overflow-x-auto"
+          style={{ height: `${sol.length * 2}em` }}
         >
-          Generate
-        </button>
-        <button
-          type="button"
-          className="border-highlight2 bg-highlight relative inline-flex w-fit cursor-pointer items-center border-t border-b p-4 px-4 py-2 text-sm font-medium text-white duration-200 hover:brightness-110"
-          onClick={resetPuzzle}
-        >
-          Reset
-        </button>
-        <button
-          type="button"
-          className="border-highlight2 bg-highlight relative -ml-px inline-flex w-fit cursor-pointer items-center rounded-r-md border p-4 px-4 py-2 text-sm font-medium text-white duration-200 hover:brightness-110"
-          onClick={() => setSolButton(!solButton)}
-        >
-          {solButton ? "Hide Solution" : "Show Solution"}
-        </button>
-      </div>
-
-      <div
-        className="overflow-x-auto"
-        style={{ height: `${sol.length * 2}em` }}
-      >
-        {puzzle.map((row, i) => (
-          <div key={`row-${i}`} className="mx-auto flex w-min">
-            {row.map((col, j) => (
-              <div
-                key={`col-${j}`}
-                className="h-8 w-8 justify-center rounded-md font-bold text-white duration-200"
-                style={{
-                  color: solButton && sol[i][j] !== "" ? "red" : "",
-                }}
-              >
-                <DelayedTransition
-                  key={`fcard-${i}`}
-                  delay={i * 30}
-                  enter={`transition duration-400`}
-                  enterFrom="opacity-0 scale-50"
-                  enterTo="opacity-100 scale-100"
-                  leave="duration-200 transition ease-in-out"
-                  leaveFrom="opacity-100 rotate-0 scale-100 "
-                  leaveTo="opacity-0 scale-95 "
+          {puzzle.map((row, i) => (
+            <div key={`row-${i}`} className="mx-auto flex w-min">
+              {row.map((col, j) => (
+                <div
+                  key={`col-${j}`}
+                  className="h-8 w-8 justify-center rounded-md font-bold text-white/90 duration-200"
+                  style={{
+                    color: solButton && sol[i][j] !== "" ? "#bf616a" : "",
+                  }}
                 >
-                  {col}
-                </DelayedTransition>
-              </div>
-            ))}
-          </div>
-        ))}
+                  <DelayedTransition
+                    key={`fcard-${i}`}
+                    delay={i * 30}
+                    enter={`transition duration-400`}
+                    enterFrom="opacity-0 translate-y-1 scale-[0.98]"
+                    enterTo="opacity-100 scale-100"
+                    leave="duration-200 transition ease-in-out"
+                    leaveFrom="opacity-100 rotate-0 scale-100 "
+                    leaveTo="opacity-0 scale-95 "
+                  >
+                    {col}
+                  </DelayedTransition>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-      <Toaster position="bottom-right" />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: toastStyle,
+          error: {
+            iconTheme: {
+              primary: "#bf616a",
+              secondary: "#eceff4",
+            },
+          },
+        }}
+      />
     </Template>
   );
 };
@@ -214,10 +244,7 @@ const WordSearch = class {
     if (iteration > 30) {
       toast(`Could not find place for word ${word} after 30 attempts.`, {
         type: "error",
-        style: {
-          background: "#434C5E",
-          color: "#FFF",
-        },
+        style: toastStyle,
       });
       return;
     }

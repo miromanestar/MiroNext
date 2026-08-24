@@ -507,7 +507,9 @@ export class Gradient {
       e(this, "geometry", void 0),
       e(this, "minigl", void 0),
       e(this, "scrollObserver", void 0),
+      e(this, "baseAmp", 320),
       e(this, "amp", 320),
+      e(this, "motionScale", 1),
       e(this, "seed", 5),
       e(this, "freqX", 14e-5),
       e(this, "freqY", 29e-5),
@@ -551,7 +553,7 @@ export class Gradient {
       e(this, "animate", (e) => {
         if (!this.shouldSkipFrame(e) || this.isMouseDown) {
           if (
-            ((this.t += Math.min(e - this.last, 1e3 / 15)),
+            ((this.t += Math.min(e - this.last, 1e3 / 15) * this.motionScale),
             (this.last = e),
             this.isMouseDown)
           ) {
@@ -767,6 +769,30 @@ export class Gradient {
   toggleColor(index) {
     this.activeColors[index] = 0 === this.activeColors[index] ? 1 : 0;
   }
+  setColors(colors) {
+    if (colors.length !== 4) return;
+
+    this.pendingColors = colors;
+    this.sectionColors = colors;
+
+    if (!this.uniforms) return;
+
+    this.uniforms.u_baseColor.value = colors[0];
+    colors.slice(1).forEach((color, index) => {
+      this.uniforms.u_waveLayers.value[index].value.color.value = color;
+    });
+  }
+  setMotion({ speed, amplitude }) {
+    this.motionScale = speed;
+    this.amp = this.baseAmp * amplitude;
+
+    if (!this.uniforms) return;
+
+    this.uniforms.u_vertDeform.value.noiseAmp.value = this.amp;
+  }
+  render() {
+    if (this.minigl && this.mesh) this.minigl.render();
+  }
   showGradientLegend() {
     this.width > this.minWidth &&
       ((this.isGradientLegendVisible = !0),
@@ -835,6 +861,8 @@ export class Gradient {
       })
       .filter(Boolean)
       .map(normalizeColor);
+
+    if (this.pendingColors) this.sectionColors = this.pendingColors;
   }
 }
 /*

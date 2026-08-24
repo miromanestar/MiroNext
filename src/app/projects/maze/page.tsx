@@ -108,13 +108,13 @@ const Maze = () => {
     ctx.globalCompositeOperation = "destination-out";
 
     //Clear an entrance and exit
-    drawLine(0, 0, 0, height, "red", ctx);
+    drawLine(0, 0, 0, height, "#bf616a", ctx);
     drawLine(
       columns * width,
       (rows - 1) * height,
       columns * width,
       rows * height,
-      "red",
+      "#bf616a",
       ctx,
     );
 
@@ -165,16 +165,16 @@ const Maze = () => {
 
         switch (dir) {
           case 0:
-            drawLine(x, y, x - width, y, "red", ctx);
+            drawLine(x, y, x - width, y, "#bf616a", ctx);
             break; //Left
           case 1:
-            drawLine(x, y, x, y - height, "red", ctx);
+            drawLine(x, y, x, y - height, "#bf616a", ctx);
             break; //Up
           case 2:
-            drawLine(x, y, x + width, y, "red", ctx);
+            drawLine(x, y, x + width, y, "#bf616a", ctx);
             break; //Right
           case 3:
-            drawLine(x, y, x, y + height, "red", ctx);
+            drawLine(x, y, x, y + height, "#bf616a", ctx);
             break; //Down
         }
       }
@@ -263,8 +263,8 @@ const Maze = () => {
     const rows = mazeR;
     const columns = mazeC;
 
-    ctx.strokeStyle = "red";
-    ctx.fillStyle = "red";
+    ctx.strokeStyle = "#bf616a";
+    ctx.fillStyle = "#bf616a";
     ctx.lineWidth = 4;
 
     if (!solButton) {
@@ -283,7 +283,7 @@ const Maze = () => {
       let x1 = getColumn(sol[i - 1], columns) * width + width / 2;
       let y1 = getRow(sol[i - 1], columns) * height + height / 2;
 
-      drawLine(x0, y0, x1, y1, "red", ctx);
+      drawLine(x0, y0, x1, y1, "#bf616a", ctx);
       ctx.strokeRect(x1, y1, ctx.lineWidth / 8, ctx.lineWidth / 8);
       ctx.strokeRect(x0, y0, ctx.lineWidth / 8, ctx.lineWidth / 8);
     }
@@ -297,56 +297,71 @@ const Maze = () => {
 
   return (
     <Template title="Maze Generator" names={["", "Maze Generator"]}>
-      <div className="flex w-full items-center justify-center gap-8 text-center text-white">
-        <div className="flex-1">
-          <label>Rows</label>
-          <div className="flex gap-2">
-            <input
-              className="w-full"
-              type="range"
-              min="4"
-              max="35"
-              value={mazeR}
-              onChange={(e) => setMazeR(parseInt(e.target.value))}
-            />
-            <output>{mazeR}</output>
+      <div className="bg-background/35 relative w-full rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_top_left,rgba(136,192,208,0.14),transparent_50%),radial-gradient(circle_at_bottom_right,rgba(129,161,193,0.12),transparent_55%)] p-3 text-white shadow-lg backdrop-blur-md sm:p-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
+          <div className="min-w-0 flex-1 text-left">
+            <label className="text-xs font-semibold tracking-wide text-white/70 uppercase">
+              Rows
+            </label>
+            <div className="mt-1.5 flex items-center gap-3">
+              <input
+                className="accent-highlight h-2 w-full cursor-pointer"
+                type="range"
+                min="4"
+                max="35"
+                value={mazeR}
+                onChange={(e) => setMazeR(parseInt(e.target.value))}
+              />
+              <output className="bg-background/50 min-w-9 rounded-xl border border-white/10 px-2 py-1 text-center text-sm font-semibold tabular-nums backdrop-blur-sm">
+                {mazeR}
+              </output>
+            </div>
+          </div>
+
+          <div className="min-w-0 flex-1 text-left">
+            <label className="text-xs font-semibold tracking-wide text-white/70 uppercase">
+              Columns
+            </label>
+            <div className="mt-1.5 flex items-center gap-3">
+              <input
+                className="accent-highlight h-2 w-full cursor-pointer"
+                type="range"
+                min="4"
+                max="35"
+                value={mazeC}
+                onChange={(e) => setMazeC(parseInt(e.target.value))}
+              />
+              <output className="bg-background/50 min-w-9 rounded-xl border border-white/10 px-2 py-1 text-center text-sm font-semibold tabular-nums backdrop-blur-sm">
+                {mazeC}
+              </output>
+            </div>
           </div>
         </div>
 
-        <div className="flex-1">
-          <label>Columns</label>
-          <div className="flex flex-1 gap-2">
-            <input
-              className="w-full"
-              type="range"
-              min="4"
-              max="35"
-              value={mazeC}
-              onChange={(e) => setMazeC(parseInt(e.target.value))}
-            />
-            <output>{mazeC}</output>
-          </div>
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:mx-auto sm:w-fit">
+          <button
+            type="button"
+            className="bg-highlight text-background border-highlight/80 inline-flex cursor-pointer items-center justify-center rounded-xl border px-4 py-2 text-sm font-semibold shadow-sm transition duration-200 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
+            onClick={() => createMaze(mazeR, mazeC)}
+          >
+            Generate
+          </button>
+          <button
+            type="button"
+            className="bg-background/50 hover:border-highlight/50 inline-flex cursor-pointer items-center justify-center rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
+            onClick={() => drawSolution()}
+          >
+            {solButton ? "Hide Solution" : "Show Solution"}
+          </button>
         </div>
       </div>
 
-      <div className="my-8 flex justify-center rounded-md">
-        <button
-          type="button"
-          className="border-highlight2 bg-highlight relative inline-flex w-fit cursor-pointer items-center rounded-l-md border p-4 px-4 py-2 text-sm font-medium text-white duration-200 hover:brightness-110"
-          onClick={() => createMaze(mazeR, mazeC)}
-        >
-          Generate
-        </button>
-        <button
-          type="button"
-          className="border-highlight2 bg-highlight relative -ml-px inline-flex w-fit cursor-pointer items-center rounded-r-md border p-4 px-4 py-2 text-sm font-medium text-white duration-200 hover:brightness-110"
-          onClick={() => drawSolution()}
-        >
-          {solButton ? "Hide Solution" : "Show Solution"}
-        </button>
+      <div className="bg-background/35 mt-4 rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_top,rgba(136,192,208,0.1),transparent_55%)] p-2 shadow-xl backdrop-blur-md sm:mt-6 sm:p-3">
+        <canvas
+          className="bg-background/35 min-h-75 w-full rounded-xl border border-white/10 shadow-inner"
+          ref={canvasRef}
+        />
       </div>
-
-      <canvas className="min-h-[300px] w-full" ref={canvasRef} />
     </Template>
   );
 };

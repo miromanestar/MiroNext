@@ -1,44 +1,45 @@
 import Image from "next/image";
-import { Fade, Bounce } from "react-awesome-reveal";
 
 const About = ({ profile }) => (
-  <section className="bg-background relative max-w-full overflow-x-hidden">
-    <div
-      className="to-secondaryBg absolute bottom-0 z-10 h-[15%] w-full bg-linear-to-b from-transparent"
-      aria-hidden="true"
-    />
-
-    <div className="mx-auto max-w-(--breakpoint-xl) items-center gap-8 py-8 lg:grid lg:grid-cols-2 lg:pb-16">
-      <div className="px-4 font-light text-gray-300 sm:text-lg lg:px-0 lg:pl-8">
-        <Bounce triggerOnce={true} direction="left">
-          <h2 className="mb-4 text-4xl font-bold text-white">About Me</h2>
-          {profile.about.map((paragraph, index) => (
-            <p key={paragraph} className={index === 0 ? "mb-4" : undefined}>
-              {paragraph}
-            </p>
+  <section
+    data-gradient-palette="about"
+    className="relative z-10 px-6 py-12 sm:px-8 sm:py-20 lg:px-12 lg:py-32"
+  >
+    <div className="mx-auto flex max-w-7xl flex-col items-start gap-8 sm:gap-10 lg:flex-row lg:justify-between">
+      <div className="w-full lg:max-w-3xl">
+        <p className="text-highlight text-sm font-semibold tracking-[0.2em] uppercase">
+          About me
+        </p>
+        <h2 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          Engineering, research, and teaching
+        </h2>
+        <div className="mt-7 max-w-2xl space-y-5 text-lg leading-8 text-gray-200">
+          {profile.about.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
           ))}
-        </Bounce>
+        </div>
+
+        <dl className="mt-8 grid gap-x-6 gap-y-5 sm:grid-cols-3">
+          {profile.quickFacts.map((fact) => (
+            <div key={fact.label} className="border-t border-white/20 pt-3">
+              <dt className="text-xs font-semibold tracking-[0.15em] text-gray-400 uppercase">
+                {fact.label}
+              </dt>
+              <dd className="mt-1.5 text-sm leading-6 font-medium text-white">
+                {fact.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
-      <div className="relative z-20 mt-8 grid grid-cols-2 gap-4 px-4 lg:px-0 lg:pr-8">
-        <Fade triggerOnce={true} direction="right" cascade={true}>
-          <div className="flex h-full items-center">
-            <Image
-              className="w-full rounded-lg shadow-lg"
-              src={profile.images.portrait.src}
-              alt={profile.images.portrait.alt}
-              width={profile.images.portrait.width}
-              height={profile.images.portrait.height}
-            />
-          </div>
-          <Image
-            className="mt-4 h-[80%] w-full rounded-lg object-cover object-right shadow-lg lg:mt-10"
-            src={profile.images.technology.src}
-            alt={profile.images.technology.alt}
-            width={profile.images.technology.width}
-            height={profile.images.technology.height}
-          />
-        </Fade>
-      </div>
+
+      <Image
+        className="mx-auto aspect-4/5 w-full max-w-72 rounded-xl border border-white/15 object-cover object-top shadow-xl sm:max-w-xs lg:mx-0 lg:max-w-sm"
+        src={profile.images.portrait.src}
+        alt={profile.images.portrait.alt}
+        width={profile.images.portrait.width}
+        height={profile.images.portrait.height}
+      />
     </div>
   </section>
 );

@@ -49,55 +49,50 @@ const features = [
 
 const AutoAttend = () => (
   <Template title="AutoAttend" names={["", "AutoAttend"]}>
-    <div className="mx-auto max-w-7xl lg:px-8">
-      <div className="mx-auto max-w-5xl sm:text-center">
-        <h2 className="text-highlight text-center text-base leading-7 font-semibold">
-          Automated attendance tracking via facial recognition
-        </h2>
-        <p className="mt-2 mb-2 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          AutoAttend
-        </p>
-        <a
-          href="https://github.com/miromanestar/AutoAttend"
-          className="text-md hover:text-highlight flex items-center justify-center leading-7 text-gray-400 duration-200"
-        >
-          <img
-            src="/images/github.svg"
-            className="white-filter mr-2 h-[20px]"
-          />
-          View Source
-        </a>
-        <p className="mt-4 text-lg leading-8 text-gray-300">
-          A proof-of-concept application levaraging open source face
-          vectorization models and vector databases to perform automated
-          classroom attendance tracking via facial recognition. It uses a host
-          of open source technologies, all connected together to create an
-          application that can be used to track attendance in a classroom
-          setting.
-        </p>
-      </div>
+    <div className="mx-auto max-w-5xl text-center">
+      <h2 className="text-highlight text-center text-base leading-7 font-semibold">
+        Automated attendance tracking via facial recognition
+      </h2>
+      <p className="mt-2 mb-2 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        AutoAttend
+      </p>
+      <a
+        href="https://github.com/miromanestar/AutoAttend"
+        className="hover:border-highlight/40 hover:text-highlight mx-auto inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/4 px-4 py-2 text-sm font-medium text-gray-300 backdrop-blur-sm transition duration-200 hover:bg-white/7"
+      >
+        <img src="/images/github.svg" className="white-filter mr-2 h-[20px]" />
+        View Source
+      </a>
+      <p className="mx-auto mt-4 max-w-4xl text-base leading-7 text-gray-300">
+        A proof-of-concept application levaraging open source face vectorization
+        models and vector databases to perform automated classroom attendance
+        tracking via facial recognition. It uses a host of open source
+        technologies, all connected together to create an application that can
+        be used to track attendance in a classroom setting.
+      </p>
     </div>
-    <div className="relative pt-16">
-      <div className="mx-auto max-w-7xl lg:px-8">
-        <img
-          src="https://i.imgur.com/c82PxpH.png"
-          alt="App screenshot"
-          className="rounded-xl shadow-2xl ring-2 ring-white/10"
-        />
-      </div>
+    <div className="pt-10 sm:pt-14">
+      <img
+        src="https://i.imgur.com/c82PxpH.png"
+        alt="App screenshot"
+        className="w-full rounded-2xl border border-white/10 bg-white/3 p-1 shadow-sm"
+      />
     </div>
-    <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-      <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+    <div className="mt-10 sm:mt-14">
+      <dl className="grid grid-cols-1 gap-3 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
-          <div key={feature.name} className="relative pl-9">
-            <dt className="inline font-semibold text-white">
+          <div
+            key={feature.name}
+            className="rounded-xl border border-white/10 bg-white/4 p-4 backdrop-blur-sm"
+          >
+            <dt className="flex items-center gap-2 font-semibold text-white">
               <feature.icon
-                className="text-highlight absolute top-1 left-1 h-5 w-5"
+                className="text-highlight h-5 w-5 shrink-0"
                 aria-hidden="true"
               />
               {feature.name}
-            </dt>{" "}
-            <dd className="inline">{feature.description}</dd>
+            </dt>
+            <dd className="mt-2">{feature.description}</dd>
           </div>
         ))}
       </dl>

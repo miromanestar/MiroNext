@@ -1,39 +1,41 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 
 import {
+  education,
   experience,
   featuredProjects,
-  institutions,
   profile,
+  socialLinks,
 } from "../data/portfolio";
 import About from "../components/About";
+import Career from "../components/Career";
 import Cards from "../components/Cards";
-import Experience from "../components/Experience";
+import Contact from "../components/Contact";
 import Hero from "../components/Hero";
-import Institutions from "../components/Institutions";
+import HomeGradient from "../components/HomeGradient";
 
 export const metadata: Metadata = {
   title: profile.siteTitle,
   description: profile.description,
 };
 
-export const viewport: Viewport = {
-  initialScale: 1,
-  width: "device-width",
-};
 
 const HomePage = () => {
-  return (
-    <div>
-      <Hero />
-      <Cards className="-mt-75" cards={featuredProjects} />
-      <About profile={profile} />
+  const githubHref = socialLinks.find((link) => link.name === "GitHub")?.href;
+  const emailHref = socialLinks.find((link) => link.name === "Email")?.href;
+  const linkedinHref = socialLinks.find(
+    (link) => link.name === "LinkedIn",
+  )?.href;
 
-      <div className="bg-secondaryBg">
-        <Experience positions={experience} />
-        <Institutions institutions={institutions} />
-      </div>
-    </div>
+  return (
+    <main className="relative">
+      <HomeGradient />
+      <Hero profile={profile} githubHref={githubHref} />
+      <Cards cards={featuredProjects} />
+      <About profile={profile} />
+      <Career positions={experience} education={education} />
+      <Contact emailHref={emailHref} linkedinHref={linkedinHref} />
+    </main>
   );
 };
 

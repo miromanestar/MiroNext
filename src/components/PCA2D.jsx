@@ -45,7 +45,7 @@ const PCA2D = ({ data, title, xaxis, yaxis }) => {
   });
 
   return (
-    <div className="h-full w-full overflow-hidden rounded-lg ring-2 ring-white/10">
+    <div className="bg-background/35 h-full w-full overflow-hidden rounded-2xl border border-white/10 backdrop-blur-sm">
       <Plot
         data={[
           {
@@ -56,7 +56,7 @@ const PCA2D = ({ data, title, xaxis, yaxis }) => {
             name: "Cluster 1",
             marker: {
               size: 4,
-              color: "#619cff",
+              color: "#81a1c1",
             },
           },
           {
@@ -67,7 +67,7 @@ const PCA2D = ({ data, title, xaxis, yaxis }) => {
             name: "Cluster 2",
             marker: {
               size: 4,
-              color: "#f8766d",
+              color: "#bf616a",
             },
           },
           {
@@ -78,7 +78,7 @@ const PCA2D = ({ data, title, xaxis, yaxis }) => {
             name: "Cluster 3",
             marker: {
               size: 4,
-              color: "#00ba38",
+              color: "#a3be8c",
             },
           },
         ]}
@@ -93,13 +93,13 @@ const PCA2D = ({ data, title, xaxis, yaxis }) => {
           shapes: loadingLines,
           modebar: { orientation: "v" },
           legend: {
-            bgcolor: "#434C5E",
-            bordercolor: "#3B4252",
+            bgcolor: "rgba(46, 52, 64, 0.72)",
+            bordercolor: "rgba(255, 255, 255, 0.12)",
             itemsizing: "constant",
             orientation: "v",
           },
-          plot_bgcolor: "#2E3440",
-          paper_bgcolor: "#2E3440",
+          plot_bgcolor: "rgba(0, 0, 0, 0)",
+          paper_bgcolor: "rgba(0, 0, 0, 0)",
           font: {
             color: "white",
           },

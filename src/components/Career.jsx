@@ -18,8 +18,7 @@ const Career = ({ positions, education }) => (
           Experience and education
         </h2>
         <p className="mt-5 text-lg leading-8 text-gray-300">
-          Professional engineering experience supported by research and computer
-          science education.
+          I’m an engineer who turns complexity into clarity, one problem at a time.
         </p>
       </div>
 

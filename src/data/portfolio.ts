@@ -57,7 +57,7 @@ export const profile = {
   },
   about: [
     "I'm a software engineer who enjoys turning complex technical problems into clear, dependable software. I care about thoughtful interfaces, practical architecture, and building tools that feel intuitive without hiding the complexity behind them.",
-    "My background spans full-stack applications visualization, and teaching. I'm drawn to work that keeps me learning and makes difficult ideas easier for others to understand.",
+    "My background spans building full-stack applications, visualization, and teaching. I'm drawn to work that keeps me learning and makes difficult ideas easier for others to understand.",
   ],
   quickFacts: [
     {
@@ -70,7 +70,7 @@ export const profile = {
     },
     {
       label: "Focus",
-      value: "Full-stack with UI specialization",
+      value: "Full-stack with UI/UX emphasis",
     },
   ],
   images: {
@@ -179,6 +179,7 @@ export const experience: Experience[] = [
     skills: [
       "Dart",
       "JavaScript",
+      "Golang",
       "C#",
       ".NET",
       "WPF",
@@ -196,7 +197,7 @@ export const experience: Experience[] = [
     logo: "/images/tva_logo.jpg",
     location: "Chattanooga, TN",
     description:
-      "Developed and supported software for operational data and engineering workflows using C#, .NET, SQL, and AVEVA PI.",
+      "Developed and supported software for operational data and engineering workflows",
     skills: ["C#", ".NET", "SQL", "Aveva PI"],
     startLabel: "February 2022",
     endLabel: "January 2026",

@@ -66,9 +66,12 @@ const HomeGradient = () => {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const mobileCanvas = window.matchMedia("(pointer: coarse)").matches;
+    const mobileCanvasQuery = window.matchMedia(
+      "(max-width: 767px), (pointer: coarse)",
+    );
     if (reducedMotion) gradient.pause();
 
+    let mobileCanvas = mobileCanvasQuery.matches;
     let stops = [];
     let animationFrame;
     let scrollImpulse = 0;
@@ -164,6 +167,8 @@ const HomeGradient = () => {
       const distance = Math.abs(window.scrollY - lastScrollY);
       lastScrollY = window.scrollY;
 
+      if (mobileCanvas) return;
+
       if (!reducedMotion) {
         scrollImpulse = Math.min(
           0.55,
@@ -179,19 +184,26 @@ const HomeGradient = () => {
       requestSceneUpdate();
     };
 
+    const handleCanvasModeChange = (event) => {
+      mobileCanvas = event.matches;
+      scrollImpulse = 0;
+      measureSections();
+      requestSceneUpdate();
+    };
+
     const resizeObserver = new ResizeObserver(handleResize);
     sections.forEach((section) => resizeObserver.observe(section));
 
     measureSections();
     updateScene();
-    if (!mobileCanvas) {
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
+    mobileCanvasQuery.addEventListener("change", handleCanvasModeChange);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      mobileCanvasQuery.removeEventListener("change", handleCanvasModeChange);
       resizeObserver.disconnect();
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
       gradient.disconnect();

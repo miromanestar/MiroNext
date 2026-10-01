@@ -4,8 +4,6 @@ import { useEffect, useRef } from "react";
 
 import { Gradient } from "./Gradient";
 
-const gradient = new Gradient();
-
 const toRgb = (hex) => [
   Number.parseInt(hex.slice(1, 3), 16) / 255,
   Number.parseInt(hex.slice(3, 5), 16) / 255,
@@ -58,6 +56,11 @@ const HomeGradient = () => {
   useEffect(() => {
     if (!canvasRef.current) return;
 
+    const gradient = new Gradient({
+      maxWidth: 1280,
+      maxFrameRate: 60,
+      density: [0.04, 0.08],
+    });
     gradient.initGradient("#gradient-canvas");
 
     const sections = Array.from(
@@ -67,13 +70,15 @@ const HomeGradient = () => {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const mobileCanvasQuery = window.matchMedia(
-      "(max-width: 767px), (pointer: coarse)",
+      "(max-width: 767px), (hover: none), (pointer: coarse)",
     );
     if (reducedMotion) gradient.pause();
 
     let mobileCanvas = mobileCanvasQuery.matches;
     let stops = [];
     let animationFrame;
+    let sceneDirty = true;
+    let canvasVisible = true;
     let scrollImpulse = 0;
     let lastScrollY = window.scrollY;
     let lastFrameTime = performance.now();
@@ -129,7 +134,8 @@ const HomeGradient = () => {
 
     const updateScene = (timestamp = performance.now()) => {
       animationFrame = undefined;
-      if (!stops.length) return;
+      if (!stops.length || (!sceneDirty && scrollImpulse === 0)) return;
+      sceneDirty = false;
 
       const elapsed = Math.min(timestamp - lastFrameTime, 50);
       lastFrameTime = timestamp;
@@ -152,15 +158,31 @@ const HomeGradient = () => {
       if (reducedMotion) gradient.render();
 
       scrollImpulse *= Math.exp(-elapsed / 420);
-      if (scrollImpulse > 0.002) {
-        animationFrame = window.requestAnimationFrame(updateScene);
+      if (scrollImpulse <= 0.002) {
+        // Apply the exact resting motion on the next draw.
+        sceneDirty = scrollImpulse > 0;
+        scrollImpulse = 0;
       }
     };
 
+    // Animated scenes update immediately before the WebGL draw, not in a
+    // second animation loop that can leave the displayed palette a frame behind.
+    gradient.beforeRender = updateScene;
+
     const requestSceneUpdate = () => {
-      if (animationFrame) return;
-      lastFrameTime = performance.now();
+      sceneDirty = true;
+      if (!reducedMotion || animationFrame || document.hidden) return;
       animationFrame = window.requestAnimationFrame(updateScene);
+    };
+
+    const updatePlayback = () => {
+      if (reducedMotion || document.hidden || !canvasVisible) {
+        gradient.pause();
+      } else {
+        lastFrameTime = performance.now();
+        gradient.play();
+      }
+      requestSceneUpdate();
     };
 
     const handleScroll = () => {
@@ -191,6 +213,12 @@ const HomeGradient = () => {
       requestSceneUpdate();
     };
 
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      canvasVisible = entry.isIntersecting;
+      updatePlayback();
+    });
+    intersectionObserver.observe(canvasRef.current.parentElement);
+
     const resizeObserver = new ResizeObserver(handleResize);
     sections.forEach((section) => resizeObserver.observe(section));
 
@@ -198,11 +226,15 @@ const HomeGradient = () => {
     updateScene();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", updatePlayback);
+    updatePlayback();
     mobileCanvasQuery.addEventListener("change", handleCanvasModeChange);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", updatePlayback);
+      intersectionObserver.disconnect();
       mobileCanvasQuery.removeEventListener("change", handleCanvasModeChange);
       resizeObserver.disconnect();
       if (animationFrame) window.cancelAnimationFrame(animationFrame);

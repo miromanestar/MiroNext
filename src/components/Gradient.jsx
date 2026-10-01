@@ -475,7 +475,10 @@ function e(object, propertyName, val) {
 }
 //Gradient object
 export class Gradient {
-  constructor(...t) {
+  constructor(options = {}) {
+    this.options = options;
+    this.animationFrame = undefined;
+    this.disconnected = false;
     (e(this, "el", void 0),
       e(this, "cssVarRetries", 0),
       e(this, "maxCssVarRetries", 200),
@@ -531,7 +534,10 @@ export class Gradient {
         ((this.isScrolling = !1), this.isIntersecting && this.play());
       }),
       e(this, "resize", () => {
-        ((this.width = window.innerWidth),
+        ((this.width = Math.min(
+          window.innerWidth,
+          this.options.maxWidth ?? Infinity,
+        )),
           this.minigl.setSize(this.width, this.height),
           this.minigl.setOrthographicCamera(),
           (this.xSegCount = Math.ceil(this.width * this.conf.density[0])),
@@ -551,7 +557,10 @@ export class Gradient {
         this.isMouseDown = !1;
       }),
       e(this, "animate", (e) => {
+        this.animationFrame = undefined;
+        if (this.disconnected) return;
         if (!this.shouldSkipFrame(e) || this.isMouseDown) {
+          this.beforeRender?.(e);
           if (
             ((this.t += Math.min(e - this.last, 1e3 / 15) * this.motionScale),
             (this.last = e),
@@ -566,21 +575,27 @@ export class Gradient {
         if (0 !== this.last && this.isStatic)
           return (this.minigl.render(), void this.disconnect());
         /*this.isIntersecting && */ (this.conf.playing || this.isMouseDown) &&
-          requestAnimationFrame(this.animate);
+          (this.animationFrame = requestAnimationFrame(this.animate));
       }),
       e(this, "addIsLoadedClass", () => {
         /*this.isIntersecting && */ !this.isLoadedClass &&
           ((this.isLoadedClass = !0),
           this.el.classList.add("isLoaded"),
-          setTimeout(() => {
-            this.el.parentElement.classList.add("isLoaded");
-          }, 3e3));
+          (this.loadedTimeout = setTimeout(() => {
+            this.el.parentElement?.classList.add("isLoaded");
+          }, 3e3)));
       }),
       e(this, "pause", () => {
         this.conf.playing = false;
+        cancelAnimationFrame(this.animationFrame);
+        this.animationFrame = undefined;
       }),
       e(this, "play", () => {
-        (requestAnimationFrame(this.animate), (this.conf.playing = true));
+        if (this.disconnected || this.conf.playing) return;
+        this.conf.playing = true;
+        this.last = performance.now();
+        if (this.mesh)
+          this.animationFrame = requestAnimationFrame(this.animate);
       }),
       e(this, "initGradient", (selector) => {
         this.el = document.querySelector(selector);
@@ -602,7 +617,7 @@ export class Gradient {
       (this.conf = {
         presetName: "",
         wireframe: false,
-        density: [0.06, 0.16],
+        density: this.options.density ?? [0.06, 0.16],
         zoom: 1,
         rotation: 0,
         playing: true,
@@ -610,11 +625,12 @@ export class Gradient {
       document.querySelectorAll("canvas").length < 1
         ? console.log("DID NOT LOAD HERO STRIPE CANVAS")
         : ((this.minigl = new MiniGl(this.el, null, null, !0)),
-          requestAnimationFrame(() => {
-            this.el &&
+          (this.initializationFrame = requestAnimationFrame(() => {
+            !this.disconnected &&
+              this.el &&
               ((this.computedCanvasStyle = getComputedStyle(this.el)),
               this.waitForCssVars());
-          })));
+          }))));
     /*
                   this.scrollObserver = await s.create(.1, !1),
                   this.scrollObserver.observe(this.el),
@@ -626,6 +642,12 @@ export class Gradient {
                   })*/
   }
   disconnect() {
+    this.disconnected = true;
+    this.pause();
+    cancelAnimationFrame(this.initializationFrame);
+    clearTimeout(this.loadedTimeout);
+    clearTimeout(this.scrollingTimeout);
+    this.beforeRender = undefined;
     (this.scrollObserver &&
       (window.removeEventListener("scroll", this.handleScroll),
       window.removeEventListener("mousedown", this.handleMouseDown),
@@ -755,12 +777,12 @@ export class Gradient {
       (this.geometry = new this.minigl.PlaneGeometry()),
       (this.mesh = new this.minigl.Mesh(this.geometry, this.material)));
   }
-  shouldSkipFrame(e) {
+  shouldSkipFrame(timestamp) {
     return (
       !!window.document.hidden ||
       !this.conf.playing ||
-      parseInt(e, 10) % 2 == 0 ||
-      void 0
+      (this.options.maxFrameRate &&
+        timestamp - this.last < 1000 / this.options.maxFrameRate - 0.5)
     );
   }
   updateFrequency(e) {
@@ -806,7 +828,10 @@ export class Gradient {
     (this.initGradientColors(),
       this.initMesh(),
       this.resize(),
-      requestAnimationFrame(this.animate),
+      (this.uniforms.u_time.value = this.t),
+      this.render(),
+      this.conf.playing &&
+        (this.animationFrame = requestAnimationFrame(this.animate)),
       window.addEventListener("resize", this.resize));
   }
   /*
@@ -831,7 +856,9 @@ export class Gradient {
           void this.init()
         );
       }
-      requestAnimationFrame(() => this.waitForCssVars());
+      this.initializationFrame = requestAnimationFrame(() => {
+        if (!this.disconnected) this.waitForCssVars();
+      });
     }
   }
   /*

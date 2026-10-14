@@ -3,7 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Popover } from "@headlessui/react";
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Transition,
+} from "@headlessui/react";
 import {
   Bars3Icon,
   GlobeEuropeAfricaIcon,
@@ -36,6 +41,12 @@ const popoverGlassStyle = {
   backgroundColor: "rgba(46, 52, 64, 0.42)",
 };
 
+const expandedMobileGlassStyle = {
+  ...glassStyle,
+  backgroundColor: "transparent",
+  backgroundImage: `linear-gradient(to bottom, ${glassStyle.backgroundColor} 32px, ${popoverGlassStyle.backgroundColor} 128px)`,
+};
+
 const ProjectLinks = ({ onNavigate }) => (
   <div className="space-y-1 p-2">
     {featuredProjects.map((project) => {
@@ -63,15 +74,6 @@ const ProjectLinks = ({ onNavigate }) => (
         </Link>
       );
     })}
-
-    <Link
-      href="/projects"
-      onClick={onNavigate}
-      className="flex cursor-pointer items-center justify-between border-t border-white/20 px-3 pt-3 pb-2 text-sm font-semibold text-white drop-shadow-sm"
-    >
-      All projects
-      <span aria-hidden="true">&rarr;</span>
-    </Link>
   </div>
 );
 
@@ -86,15 +88,15 @@ const SocialLinks = ({ className = "" }) => (
           href={item.href}
           target={external ? "_blank" : undefined}
           rel={external ? "noreferrer" : undefined}
-          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl opacity-80 transition hover:bg-white/10 hover:opacity-100"
+          className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-xl opacity-80 transition hover:bg-white/10 hover:opacity-100 md:h-12 md:w-12"
         >
           <span className="sr-only">{item.name}</span>
           <Image
-            className="white-filter h-8 w-8"
+            className="white-filter h-10 w-10 md:h-8 md:w-8"
             src={item.image}
             alt=""
-            width={32}
-            height={32}
+            width={40}
+            height={40}
             aria-hidden="true"
           />
         </a>
@@ -141,8 +143,8 @@ const DesktopProjects = () => {
         </button>
       </div>
 
-      {open && (
-        <div className="header-menu-content absolute top-full -left-3 w-84 pt-3.5">
+      <Transition show={open}>
+        <div className="header-menu-content absolute top-full -left-3 w-84 pt-3.5 transition-[opacity,translate] duration-150 ease-out data-closed:-translate-y-1 data-closed:opacity-0 motion-reduce:transition-none">
           <div
             className={`rounded-b-2xl border-t-0 ${glassSurface}`}
             style={popoverGlassStyle}
@@ -150,7 +152,7 @@ const DesktopProjects = () => {
             <ProjectLinks onNavigate={close} />
           </div>
         </div>
-      )}
+      </Transition>
     </div>
   );
 };
@@ -158,10 +160,15 @@ const DesktopProjects = () => {
 const Header = () => (
   <Popover as="header" className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5">
     {({ open, close: closeMobile }) => (
-      <>
-        <div className="relative mx-auto mt-3 flex h-18 max-w-[88rem] items-center justify-between rounded-2xl px-4 sm:px-5">
+      <div className="relative mx-auto mt-3 max-w-[88rem]">
+        <span
+          className={`pointer-events-none absolute inset-0 rounded-2xl md:hidden ${glassSurface}`}
+          style={open ? expandedMobileGlassStyle : glassStyle}
+          aria-hidden="true"
+        />
+        <div className="relative flex h-18 items-center justify-between rounded-2xl px-4 sm:px-5">
           <span
-            className={`pointer-events-none absolute inset-0 rounded-2xl ${glassSurface}`}
+            className={`pointer-events-none absolute inset-0 hidden rounded-2xl md:block ${glassSurface}`}
             style={glassStyle}
             aria-hidden="true"
           />
@@ -200,48 +207,55 @@ const Header = () => (
 
           <div className="relative z-10 flex items-center gap-2">
             <SocialLinks className="hidden md:flex" />
-            <Popover.Button className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl text-gray-100 transition hover:bg-white/10 hover:text-white focus:outline-none md:hidden">
+            <PopoverButton className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl text-gray-100 transition hover:bg-white/10 hover:text-white focus:outline-none md:hidden">
               <span className="sr-only">
                 {open ? "Close navigation" : "Open navigation"}
               </span>
-              {open ? (
-                <XMarkIcon className="h-7 w-7" aria-hidden="true" />
-              ) : (
-                <Bars3Icon className="h-7 w-7" aria-hidden="true" />
-              )}
-            </Popover.Button>
+              <Bars3Icon
+                className={`absolute h-7 w-7 transition-[opacity,rotate] duration-150 ease-out motion-reduce:transition-none ${open ? "rotate-45 opacity-0" : "rotate-0 opacity-100"}`}
+                aria-hidden="true"
+              />
+              <XMarkIcon
+                className={`absolute h-7 w-7 transition-[opacity,rotate] duration-150 ease-out motion-reduce:transition-none ${open ? "rotate-0 opacity-100" : "-rotate-45 opacity-0"}`}
+                aria-hidden="true"
+              />
+            </PopoverButton>
           </div>
         </div>
 
-        <Popover.Panel
-          className={`header-menu-content mx-auto mt-2 max-w-[88rem] rounded-2xl p-2 md:hidden ${glassSurface}`}
-          style={popoverGlassStyle}
+        <PopoverPanel
+          transition
+          className="header-menu-content relative grid grid-rows-[1fr] opacity-100 transition-[grid-template-rows,opacity] duration-150 ease-out data-closed:grid-rows-[0fr] data-closed:opacity-0 motion-reduce:transition-none md:hidden"
         >
-          <nav aria-label="Mobile navigation">
-            <Link
-              href="/"
-              onClick={closeMobile}
-              className="block cursor-pointer rounded-xl px-3 py-3 text-base font-semibold text-white transition hover:bg-white/10"
-            >
-              Home
-            </Link>
-            <Link
-              href="/projects"
-              onClick={closeMobile}
-              className="block cursor-pointer rounded-xl px-3 py-3 text-base font-semibold text-white transition hover:bg-white/10"
-            >
-              Projects
-            </Link>
-            <div className="mt-1 border-t border-white/10 pt-2">
-              <p className="px-3 pb-1 text-xs font-semibold tracking-[0.16em] text-white uppercase drop-shadow-[0_1px_4px_rgb(0_0_0/0.8)]">
-                Featured projects
-              </p>
-              <ProjectLinks onNavigate={closeMobile} />
+          <div className="min-h-0 overflow-hidden">
+            <div className="p-2">
+              <nav aria-label="Mobile navigation">
+                <Link
+                  href="/"
+                  onClick={closeMobile}
+                  className="block cursor-pointer rounded-xl px-3 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/projects"
+                  onClick={closeMobile}
+                  className="block cursor-pointer rounded-xl px-3 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+                >
+                  Projects
+                </Link>
+                <div className="mt-1 border-t border-white/10 pt-2">
+                  <p className="px-3 pb-1 text-sm font-medium text-gray-300">
+                    Featured projects
+                  </p>
+                  <ProjectLinks onNavigate={closeMobile} />
+                </div>
+              </nav>
+              <SocialLinks className="mt-1 justify-center pt-2" />
             </div>
-          </nav>
-          <SocialLinks className="mt-1 justify-center pt-2" />
-        </Popover.Panel>
-      </>
+          </div>
+        </PopoverPanel>
+      </div>
     )}
   </Popover>
 );

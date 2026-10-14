@@ -98,6 +98,7 @@ export const projects: Project[] = [
   {
     name: "SAU Missions Dashboard",
     href: "/projects/missions",
+    source: "https://github.com/miromanestar/SAU-Dashboard-Releases",
     description:
       "A simple frontend UI for Southern Adventist University which displays information about current student missionaries.",
     image: "https://i.imgur.com/MPHVBNT.jpg",

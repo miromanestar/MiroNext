@@ -5,7 +5,7 @@ import Container from "./Container";
 import PageGradient from "./PageGradient";
 
 const Template = ({ title, names, children, rightSidebar = null }) => (
-  <div className="relative min-h-screen">
+  <div className="project-template relative min-h-screen">
     <PageGradient title={title} />
 
     <Head>

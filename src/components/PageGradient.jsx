@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { Gradient } from "./Gradient";
 
 const palettes = [
-  ["#2e3440", "#2f3540", "#313944", "#343e4b"],
-  ["#2e3440", "#2f3640", "#323d40", "#354541"],
-  ["#2e3440", "#32343f", "#393842", "#403b46"],
-  ["#2e3440", "#303641", "#333d47", "#384753"],
-  ["#2e3440", "#30363f", "#343d3c", "#39443e"],
-  ["#2e3440", "#33343d", "#3b383f", "#433b41"],
+  ["#2e3440", "#2f3540", "#343d4d", "#33414e"],
+  ["#2e3440", "#2f3640", "#333f48", "#354548"],
+  ["#2e3440", "#32343f", "#3b3c4d", "#403d4b"],
+  ["#2e3440", "#303641", "#343e4e", "#344450"],
+  ["#2e3440", "#30363f", "#363f47", "#3b4646"],
+  ["#2e3440", "#33343d", "#3d3b48", "#423e49"],
 ];
 
 const hashTitle = (title) =>
@@ -19,35 +19,46 @@ const hashTitle = (title) =>
     0,
   );
 
-const toRgb = (hex) => [
-  Number.parseInt(hex.slice(1, 3), 16) / 255,
-  Number.parseInt(hex.slice(3, 5), 16) / 255,
-  Number.parseInt(hex.slice(5, 7), 16) / 255,
-];
-
 const PageGradient = ({ title }) => {
-  const canvasRef = useRef(null);
   const palette = palettes[Math.abs(hashTitle(title)) % palettes.length];
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    const gradient = new Gradient({
+      maxWidth: 1280,
 
-    const pageGradient = new Gradient();
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    pageGradient.initGradient("#page-gradient-canvas");
-    pageGradient.setColors(palette.map(toRgb));
-    pageGradient.setMotion({
-      speed: reducedMotion ? 0 : 0.002,
-      amplitude: 0.006,
+      density: [0.03, 0.06],
     });
-    if (reducedMotion) pageGradient.pause();
+    gradient.initGradient("#page-gradient-canvas");
+    gradient.setColors(
+      palette.map((hex) =>
+        [1, 3, 5].map((offset) =>
+          Number.parseInt(hex.slice(offset, offset + 2), 16) / 255,
+        ),
+      ),
+    );
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePlayback = () => {
+      gradient.setMotion({
+        speed: reducedMotion.matches ? 0 : 0.35,
+        amplitude: 0.18,
+      });
+      if (reducedMotion.matches || document.hidden) {
+        gradient.pause();
+        gradient.render();
+      } else {
+        gradient.play();
+      }
+    };
+
+    updatePlayback();
+    reducedMotion.addEventListener("change", updatePlayback);
+    document.addEventListener("visibilitychange", updatePlayback);
 
     return () => {
-      pageGradient.pause();
-      pageGradient.disconnect();
+      reducedMotion.removeEventListener("change", updatePlayback);
+      document.removeEventListener("visibilitychange", updatePlayback);
+      gradient.disconnect();
     };
   }, [palette]);
 
@@ -57,7 +68,6 @@ const PageGradient = ({ title }) => {
       aria-hidden="true"
     >
       <canvas
-        ref={canvasRef}
         id="page-gradient-canvas"
         className="page-gradient-canvas absolute inset-0 h-full w-full"
         style={{
@@ -68,6 +78,7 @@ const PageGradient = ({ title }) => {
         }}
       />
       <div className="mobile-gradient-fade absolute inset-0" />
+
     </div>
   );
 };

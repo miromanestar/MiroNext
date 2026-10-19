@@ -59,7 +59,7 @@ const HomeGradient = () => {
     const gradient = new Gradient({
       maxWidth: 1280,
       maxFrameRate: 60,
-      density: [0.04, 0.08],
+      density: [0.03, 0.06],
     });
     gradient.initGradient("#gradient-canvas");
 
@@ -85,16 +85,11 @@ const HomeGradient = () => {
 
     const measureSections = () => {
       stops = sections
-        .map((section, index) => {
+        .map((section) => {
           const top = section.getBoundingClientRect().top + window.scrollY;
-          const anchor =
-            index === 0
-              ? top + section.offsetHeight / 2
-              : top +
-                Math.min(section.offsetHeight * 0.15, window.innerHeight * 0.2);
 
           return {
-            center: anchor,
+            top,
             scene: scenes[section.dataset.gradientPalette],
           };
         })
@@ -102,21 +97,19 @@ const HomeGradient = () => {
     };
 
     const getCurrentScene = () => {
-      const viewportCenter = window.scrollY + window.innerHeight / 2;
-
-      if (viewportCenter <= stops[0].center) return stops[0].scene;
-      if (viewportCenter >= stops.at(-1).center) return stops.at(-1).scene;
-
       for (let index = 0; index < stops.length - 1; index += 1) {
         const current = stops[index];
         const next = stops[index + 1];
+        // Blend only while the incoming section enters the reading area,
+        // then hold its palette instead of blending throughout the section.
+        const start = next.top - window.innerHeight * 0.8;
+        const end = next.top - window.innerHeight * 0.45;
 
-        if (viewportCenter < current.center || viewportCenter > next.center) {
-          continue;
-        }
+        if (window.scrollY <= start) return current.scene;
+        if (window.scrollY >= end) continue;
 
         const progress = smoothstep(
-          (viewportCenter - current.center) / (next.center - current.center),
+          (window.scrollY - start) / (end - start),
         );
 
         return {
@@ -201,16 +194,20 @@ const HomeGradient = () => {
       requestSceneUpdate();
     };
 
+    let resizeFrame;
     const handleResize = () => {
-      measureSections();
-      requestSceneUpdate();
+      if (resizeFrame !== undefined) return;
+      resizeFrame = window.requestAnimationFrame(() => {
+        resizeFrame = undefined;
+        measureSections();
+        requestSceneUpdate();
+      });
     };
 
     const handleCanvasModeChange = (event) => {
       mobileCanvas = event.matches;
       scrollImpulse = 0;
-      measureSections();
-      requestSceneUpdate();
+      handleResize();
     };
 
     const intersectionObserver = new IntersectionObserver(([entry]) => {
@@ -238,6 +235,7 @@ const HomeGradient = () => {
       mobileCanvasQuery.removeEventListener("change", handleCanvasModeChange);
       resizeObserver.disconnect();
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      if (resizeFrame !== undefined) window.cancelAnimationFrame(resizeFrame);
       gradient.disconnect();
     };
   }, []);

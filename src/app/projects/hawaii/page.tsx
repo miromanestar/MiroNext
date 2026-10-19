@@ -15,9 +15,14 @@ const HawaiiPRB = () => (
     title="Hawaii vs PRB Geochemical Analysis"
     names={["", "Hawaii vs PRB"]}
     rightSidebar={
-      <div className="mx-auto w-full max-w-sm min-[2200px]:sticky min-[2200px]:top-28 min-[2200px]:mx-0">
-        <PaperDetails data={details} />
-      </div>
+      <>
+        <div className="min-[2200px]:hidden">
+          <PaperDetails data={details} compact />
+        </div>
+        <div className="hidden min-[2200px]:sticky min-[2200px]:top-28 min-[2200px]:block">
+          <PaperDetails data={details} />
+        </div>
+      </>
     }
   >
     {/* <iframe src='/plots/hawaii_pca.html' className='w-full h-[1200px]' title='Hawaii vs PRB Geochemical Analysis'></iframe> */}

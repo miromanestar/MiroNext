@@ -143,13 +143,16 @@ const DesktopProjects = () => {
         </button>
       </div>
 
+      {/* Fading a glass ancestor would isolate its backdrop until the fade ends. */}
       <Transition show={open}>
-        <div className="header-menu-content absolute top-full -left-3 w-84 pt-3.5 transition-[opacity,translate] duration-150 ease-out data-closed:-translate-y-1 data-closed:opacity-0 motion-reduce:transition-none">
+        <div className="header-menu-content group absolute top-full -left-3 w-84 pt-3.5 transition-[translate] duration-150 ease-out data-closed:-translate-y-1 motion-reduce:transition-none">
           <div
             className={`rounded-b-2xl border-t-0 ${glassSurface}`}
             style={popoverGlassStyle}
           >
-            <ProjectLinks onNavigate={close} />
+            <div className="transition-opacity duration-150 ease-out group-data-closed:opacity-0 motion-reduce:transition-none">
+              <ProjectLinks onNavigate={close} />
+            </div>
           </div>
         </div>
       </Transition>

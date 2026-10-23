@@ -74,7 +74,7 @@ const Missions = () => (
     </div>
     <div className="pt-10 sm:pt-14">
       <img
-        src="https://i.imgur.com/bOpGpn9.jpg"
+        src="https://i.imgur.com/XHyUdZG.jpeg"
         alt="App screenshot"
         className="w-full rounded-2xl border border-white/10 bg-white/3 p-1 shadow-sm"
       />
